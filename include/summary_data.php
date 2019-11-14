@@ -1,5 +1,5 @@
 <?php
-
+/*
 //IN: JSON - OUT:JSON
 function summary($json_data) {
 	$data = json_decode($json_data,true);
@@ -19,4 +19,5 @@ $json_summary = summary($json_data);
 $f_summary = fopen('summary.json', 'w');
 fwrite($f_summary, $json_summary);
 fclose($f_summary);
+*/
 ?>
