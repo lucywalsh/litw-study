@@ -1,0 +1,7 @@
+*.log
+.DS_Store
+.idea
+api/db/template.db
+api/src/vendor/*
+node_modules/
+template/include/config.php
