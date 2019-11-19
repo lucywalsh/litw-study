@@ -5,9 +5,9 @@
  *
  * Author: Trevor Croxson
  *       : Nigini A. Oliveira
- * 
+ *
  * Last Modified: February 5, 2017
- * 
+ *
  * © Copyright 2017 LabintheWild.
  * For questions about this file and permission to use
  * the code, contact us at info@labinthewild.org
@@ -67,23 +67,20 @@ module.exports = (function() {
 		.add("retake", {
 			required: true
 		})
-		.add("gender")
-		.add("age", { 
-			style: "numericalFreeText", 
+		.add("age", {
+			style: "numericalFreeText",
 			prompt: "How old are you? (Please type a number)",
 			boundsMessage: "Are you really %s years old? If not, please make sure to enter the correct age so that your data contributes to our research.",
 			minValue: 6,
 			maxValue: 99
 		})
-		.add("multinational")
-		.add("country")
-		.add("education", {
-			style: "numericalFreeText",
-			prompt: "How many years of education have you completed, starting from primary school?",
-			boundsMessage: "Have you really completed %s years of education? If not, please make sure to enter the correct value so that your data contributes to our research.",
-			minValue: 6,
-			maxValue: 30
-		})
+		.add("country", {
+      style: "dropdown",
+      prompt: "Where do you live?",
+      options: "countries",
+      expandable: true,
+    })
+		.add("education")
 		.render(startTrials);
 
 		LITW.utils.showSlide("demographics");
@@ -91,7 +88,7 @@ module.exports = (function() {
 
 	initJsPsych = function() {
 		// ******* BEGIN STUDY PROGRESSION ******** //
-		
+
 		// 1. GENERAL INSTRUCTIONS PAGE
 		timeline.push({
 			type: "display-slide",
@@ -104,7 +101,7 @@ module.exports = (function() {
 		// loop through all practice stims and register
 		// them with the jsPsych timeline
 		params.practiceStims.forEach(function(stim, index) {
-			
+
 			// record tracking information and update progress counter
 			timeline.push({
 				type: "call-function",
@@ -131,7 +128,7 @@ module.exports = (function() {
 				func: submitData
 			});
 		});
-		
+
 		// 3. PRE-TRIAL BREAK
 		timeline.push({
 			type: "call-function",
@@ -149,10 +146,10 @@ module.exports = (function() {
 			withTouch: window.litwWithTouch,
 			display_element: $("#break")
 		});
-		
+
 		// 4. TRIAL STIMS, PHASE 1
 		params.stims.forEach(function(stim, index) {
-			
+
 			// record tracking information and update progress counter
 			timeline.push({
 				type: "call-function",
@@ -200,7 +197,7 @@ module.exports = (function() {
 		// re-shuffle stim order
 		params.stims = LITW.utils.shuffleArrays(params.stims);
 		params.stims.forEach(function(stim, index) {
-			
+
 			// record tracking information
 			timeline.push({
 				type: "call-function",
@@ -235,7 +232,7 @@ module.exports = (function() {
 	},
 
 	startTrials = function(demographicsData) {
-		
+
 		// send demographics data to the server
 		LITW.data.submitDemographics(demographicsData);
 
@@ -265,12 +262,12 @@ module.exports = (function() {
 		studyData.splice(0, params.practiceStims.length);
 
 		var numNiceCats = studyData.filter(function(item) {
-			
+
 			// the nice cats are always on the right!
 			return item.key_press === 50;
 		}).length;
 		var numMeanCats = studyData.filter(function(item) {
-			
+
 			// the mean cats are always on the left!
 			return item.key_press === 49;
 		}).length;
@@ -278,8 +275,8 @@ module.exports = (function() {
 		if (numNiceCats === numMeanCats) {
 			whichCat = ["cat-nice.jpg", "cat-mean.jpg"];
 		} else {
-			whichCat = (numNiceCats > numMeanCats) ? 
-				["cat-nice.jpg"] : 
+			whichCat = (numNiceCats > numMeanCats) ?
+				["cat-nice.jpg"] :
 				["cat-mean.jpg"];
 		}
 
@@ -312,7 +309,7 @@ module.exports = (function() {
 
 	readSummaryData = function() {
 		$.getJSON( "summary.json", function( data ) {
-			//TODO: 'data' contains the produced summary form DB data 
+			//TODO: 'data' contains the produced summary form DB data
 			//      in case the study was loaded using 'index.php'
 			//SAMPLE: The example code gets the cities of study partcipants.
 			console.log(data);
@@ -351,21 +348,21 @@ module.exports = (function() {
 		// shuffle the order of the trials
 		params.practiceStims = LITW.utils.shuffleArrays(params.practiceStims);
 		params.stims = LITW.utils.shuffleArrays(params.stims);
-		
+
 		LITW.utils.showSlide("img-loading");
-		
+
 		// preload images
 		jsPsych.pluginAPI.preloadImages(params.stims,
-			
+
 			// initialize the jsPsych timeline and
 			// proceed to IRB page when loading has finished
-			function() { 
+			function() {
 				initJsPsych();
-				irb(); 
+				irb();
 			},
-			
+
 			// update loading indicator as stims preload
-			function(numLoaded) { 
+			function(numLoaded) {
 				$("#img-loading").html(loadingTemplate({
 					msg: C.loadingMsg,
 					numLoaded: numLoaded,
@@ -375,5 +372,3 @@ module.exports = (function() {
 		);
 	});
 })();
-
-
