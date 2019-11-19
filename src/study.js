@@ -19,7 +19,7 @@ require("bootstrap");
 require("jquery-ui-bundle");
 var LITW_STUDY_CONTENT = require("./data");
 var irbTemplate = require("../templates/irb.html");
-var instructionsTemplate = require("../templates/instructions.html");
+var instructionsPart1Template = require("../templates/instructions.html");
 var loadingTemplate = require("../templates/loading.html");
 var resultsTemplate = require("../templates/results.html");
 var progressTemplate = require("../templates/progress.html");
@@ -35,8 +35,8 @@ module.exports = (function() {
 	self = this,
 	C,
 	params = {
-		stims: [],
-		practiceStims: [],
+		stims1: [],
+		practiceStims1: [],
 		currentProgress: 0
 	},
 
@@ -89,45 +89,49 @@ module.exports = (function() {
 	initJsPsych = function() {
 		// ******* BEGIN STUDY PROGRESSION ******** //
 
-		// 1. GENERAL INSTRUCTIONS PAGE
+		// Instructions part 1
 		timeline.push({
 			type: "display-slide",
             display_element: $("#instructions"),
 			name: "instructions",
-            template: instructionsTemplate({withTouch: window.litwWithTouch})
+            template: instructionsPart1Template({withTouch: window.litwWithTouch})
 		});
 
-		// 2. PRACTICE STIMS
+		// 2. PRACTICE for trial 1
 		// loop through all practice stims and register
 		// them with the jsPsych timeline
-		params.practiceStims.forEach(function(stim, index) {
 
-			// record tracking information and update progress counter
-			timeline.push({
-				type: "call-function",
-				func: function() {
-					$("#progress-header").html(progressTemplate({
-						msg: C.progressMsg,
-						progress: ++params.currentProgress,
-						total: params.practiceStims.length
-					}))
-					.show();
+		params.practiceStims1.forEach(
+      function(stim, index) {
+        console.log(stim);
+        console.log(index);
+  			// record tracking information and update progress counter
+  			timeline.push({
+  				type: "call-function",
+  				func: function() {
+  					$("#progress-header").html(progressTemplate({
+  						msg: C.progressMsg,
+  						progress: ++params.currentProgress,
+  						total: params.practiceStims1.length
+  					}))
+  					.show();
 
-					LITW.utils.showSlide("trials");
-					LITW.tracking.recordCheckpoint("practice-" + (index + 1));
-				}
-			});
+  					LITW.utils.showSlide("trials");
+  					LITW.tracking.recordCheckpoint("practice-" + (index + 1));
+  				}
+  			});
 
-			stim.withTouch = window.litwWithTouch;
-			timeline.push(stim);
+  			stim.withTouch = window.litwWithTouch;
+  			timeline.push(stim);
 
-			// register a function to submit data as soon
-			// as this trial is completed
-			timeline.push({
-				type: "call-function",
-				func: submitData
-			});
-		});
+  			// register a function to submit data as soon
+  			// as this trial is completed
+  			timeline.push({
+  				type: "call-function",
+  				func: submitData
+  			});
+		  }
+    );
 
 		// 3. PRE-TRIAL BREAK
 		timeline.push({
@@ -148,7 +152,7 @@ module.exports = (function() {
 		});
 
 		// 4. TRIAL STIMS, PHASE 1
-		params.stims.forEach(function(stim, index) {
+		params.stims1.forEach(function(stim, index) {
 
 			// record tracking information and update progress counter
 			timeline.push({
@@ -157,7 +161,7 @@ module.exports = (function() {
 					$("#progress-header").html(progressTemplate({
 						msg: C.progressMsg,
 						progress: ++params.currentProgress,
-						total: params.stims.length * 2
+						total: params.stims1.length * 2
 					}))
 					.show();
 
@@ -195,8 +199,8 @@ module.exports = (function() {
 
 		// 6. TRIAL STIMS, PHASE 2
 		// re-shuffle stim order
-		params.stims = LITW.utils.shuffleArrays(params.stims);
-		params.stims.forEach(function(stim, index) {
+		params.stims1 = LITW.utils.shuffleArrays(params.stims1);
+		params.stims1.forEach(function(stim, index) {
 
 			// record tracking information
 			timeline.push({
@@ -205,7 +209,7 @@ module.exports = (function() {
 					$("#progress-header").html(progressTemplate({
 						msg: C.progressMsg,
 						progress: ++params.currentProgress,
-						total: params.stims.length * 2
+						total: params.stims1.length * 2
 					}))
 					.show();
 
@@ -259,7 +263,7 @@ module.exports = (function() {
 		whichCat;
 
 		// strip out the data generated from the practice trial
-		studyData.splice(0, params.practiceStims.length);
+		studyData.splice(0, params.practiceStims1.length);
 
 		var numNiceCats = studyData.filter(function(item) {
 
@@ -342,17 +346,18 @@ module.exports = (function() {
 
 		// Load the trial configuration data for the practice
 		// trials and the real trials
-		params.practiceStims = C.practiceCats;
-		params.stims = C.trialCats;
+		params.practiceStims1 = C.practiceWebpages;
+		params.stims1 = C.trialWebpages;
 
 		// shuffle the order of the trials
-		params.practiceStims = LITW.utils.shuffleArrays(params.practiceStims);
-		params.stims = LITW.utils.shuffleArrays(params.stims);
+		params.practiceStims1 = LITW.utils.shuffleArrays(params.practiceStims1);
+		params.stims1 = LITW.utils.shuffleArrays(params.stims1);
 
 		LITW.utils.showSlide("img-loading");
 
+
 		// preload images
-		jsPsych.pluginAPI.preloadImages(params.stims,
+		jsPsych.pluginAPI.preloadImages(params.stims1,
 
 			// initialize the jsPsych timeline and
 			// proceed to IRB page when loading has finished
@@ -366,9 +371,10 @@ module.exports = (function() {
 				$("#img-loading").html(loadingTemplate({
 					msg: C.loadingMsg,
 					numLoaded: numLoaded,
-					total: params.stims.length
+					total: params.stims1.length
 				}));
 			}
 		);
+
 	});
 })();

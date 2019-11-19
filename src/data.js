@@ -4,9 +4,9 @@
  * Raw data for the LITW demo study.
  *
  * Author: Trevor Croxson
- * 
+ *
  * Last Modified: February 5, 2017
- * 
+ *
  * © Copyright 2017 LabintheWild.
  * For questions about this file and permission to use
  * the code, contact us at info@labinthewild.org
@@ -27,49 +27,48 @@ module.exports = {
 	"midTrial": {
 		"header": "You're doing great! Take a breather."
 	},
-	"practiceCats": [
+	"practiceWebpages": [
 		{
-			"type": "single-stim",
-			"stimulus": "<img src='img/stim-img/cat1.jpg' class='left-stim' /><img src='img/stim-img/cat2.jpg' class='right-stim' />",
-			"is_html": true,
-			"choices": [49, 50], // the numbers 1 - 2
-			"prompt": "Which picture do you identify with most? <span class='bolded-blue'>(Press 1 to select the left image and 2 to select the right image. You may also use your mouse to click on an image.)</span>",
-			"promptWithTouch": "Which picture do you identify with most? <span class='bolded-blue'>(Tap on an image to select it.)</span>"
+			"type": "survey-multi-select",
+      "questions": {
+        "prompt": "Which types of data would you be happy to provide this website? <span class='bolded-blue'>(Click on a type of data to select it. Select as many as you like.)</span>",
+        "options": ['Email address','Payment information','Likes and dislikes','Protected characteristics'],
+        "horiztonal":true,
+        "required": true,
+        "name":"Data"
+      }
+			//"stimulus": "<img src='img/websites/twitter.png' style='width:100%;height:50%'/>",
+			//"is_html": true,
+			//"options": ['Email address','Payment information','Likes and dislikes','Protected characteristics'],
+			//"prompt": "Which types of data would you be happy to provide this website? <span class='bolded-blue'>(Click on a type of data to select it. Select as many as you like.)</span>",
+			//"promptWithTouch": "Which data would you be happy to provide to this website? <span class='bolded-blue'>(Tap on a type of data to select it. Select as many as you like.)</span>"
 		}
 	],
-	"trialCats": [
-		{
+	"trialWebpages": [
+    {
 			"type": "single-stim",
-			"stimulus": "<img src='img/stim-img/cat3.jpg' class='left-stim' /><img src='img/stim-img/cat4.jpg' class='right-stim' />",
+			"stimulus": "<img src='img/websites/facebook.png'/>",
 			"is_html": true,
 			"choices": [49, 50], // the numbers 1 - 2
-			"prompt": "Which picture do you identify with most? <span class='bolded-blue'>(Press 1 to select the left image and 2 to select the right image. You may also use your mouse to click on an image.)</span>",
-			"promptWithTouch": "Which picture do you identify with most? <span class='bolded-blue'>(Tap on an image to select it.)</span>"
+			"prompt": "Which data would you be happy to provide this website? <span class='bolded-blue'>(Click on a type of data to select it. Select as many as you like.)</span>",
+			"promptWithTouch": "Which data would you be happy to provide to this website? <span class='bolded-blue'>(Tap on a type of data to select it. Select as many as you like.)</span>"
 		},
-		{
+    {
 			"type": "single-stim",
-			"stimulus": "<img src='img/stim-img/cat5.jpg' class='left-stim' /><img src='img/stim-img/cat6.jpg' class='right-stim' />",
+			"stimulus": "<img src='img/websites/amazon.png'/>",
 			"is_html": true,
 			"choices": [49, 50], // the numbers 1 - 2
-			"prompt": "Which picture do you identify with most? <span class='bolded-blue'>(Press 1 to select the left image and 2 to select the right image. You may also use your mouse to click on an image.)</span>",
-			"promptWithTouch": "Which picture do you identify with most? <span class='bolded-blue'>(Tap on an image to select it.)</span>"
+			"prompt": "Which data would you be happy to provide this website? <span class='bolded-blue'>(Click on a type of data to select it. Select as many as you like.)</span>",
+			"promptWithTouch": "Which data would you be happy to provide to this website? <span class='bolded-blue'>(Tap on a type of data to select it. Select as many as you like.)</span>"
 		},
-		{
+    {
 			"type": "single-stim",
-			"stimulus": "<img src='img/stim-img/cat7.jpg' class='left-stim' /><img src='img/stim-img/cat8.jpg' class='right-stim' />",
+			"stimulus": "<img src='img/websites/google_maps.png'/>",
 			"is_html": true,
 			"choices": [49, 50], // the numbers 1 - 2
-			"prompt": "Which picture do you identify with most? <span class='bolded-blue'>(Press 1 to select the left image and 2 to select the right image. You may also use your mouse to click on an image.)</span>",
-			"promptWithTouch": "Which picture do you identify with most? <span class='bolded-blue'>(Tap on an image to select it.)</span>"
+			"prompt": "Which data would you be happy to provide this website? <span class='bolded-blue'>(Click on a type of data to select it. Select as many as you like.)</span>",
+			"promptWithTouch": "Which data would you be happy to provide to this website? <span class='bolded-blue'>(Tap on a type of data to select it. Select as many as you like.)</span>"
 		},
-		{
-			"type": "single-stim",
-			"stimulus": "<img src='img/stim-img/cat9.jpg' class='left-stim' /><img src='img/stim-img/cat10.jpg' class='right-stim' />",
-			"is_html": true,
-			"choices": [49, 50], // the numbers 1 - 2
-			"prompt": "Which picture do you identify with most? <span class='bolded-blue'>(Press 1 to select the left image and 2 to select the right image. You may also use your mouse to click on an image.)</span>",
-			"promptWithTouch": "Which picture do you identify with most? <span class='bolded-blue'>(Tap on an image to select it.)</span>"
-		}
 	],
 	"loadingMsg": "Loading resources:",
 	"progressMsg": "Progress:",
