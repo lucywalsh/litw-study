@@ -51,7 +51,6 @@ jsPsych.plugins['survey-multi-choice'] = (function() {
 
     // add multiple-choice questions
     for (var i = 0; i < trial.questions.length; i++) {
-      console.log(trial.questions[i])
       // create question container
       var question_classes = [_join(plugin_id_name, 'question')];
       if (trial.horizontal) {
