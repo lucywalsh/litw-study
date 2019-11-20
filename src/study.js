@@ -20,6 +20,7 @@ require("jquery-ui-bundle");
 var LITW_STUDY_CONTENT = require("./data");
 var irbTemplate = require("../templates/irb.html");
 var instructionsPart1Template = require("../templates/instructions.html");
+var instructionsPart2Template = require("../templates/instructions2.html");
 var loadingTemplate = require("../templates/loading.html");
 var resultsTemplate = require("../templates/results.html");
 var progressTemplate = require("../templates/progress.html");
@@ -98,13 +99,9 @@ module.exports = (function() {
 		});
 
 		// 2. PRACTICE for trial 1
-		// loop through all practice stims and register
-		// them with the jsPsych timeline
-
+		// loop through practice stims and register them with the jsPsych timeline
 		params.practiceStims1.forEach(
       function(stim, index) {
-        console.log(stim);
-        console.log(index);
   			// record tracking information and update progress counter
   			timeline.push({
   				type: "call-function",
@@ -151,7 +148,7 @@ module.exports = (function() {
 			display_element: $("#break")
 		});
 
-		// 4. TRIAL STIMS, PHASE 1
+		// First trial
 		params.stims1.forEach(function(stim, index) {
 
 			// record tracking information and update progress counter
@@ -161,7 +158,7 @@ module.exports = (function() {
 					$("#progress-header").html(progressTemplate({
 						msg: C.progressMsg,
 						progress: ++params.currentProgress,
-						total: params.stims1.length * 2
+						total: params.stims1.length
 					}))
 					.show();
 
@@ -185,6 +182,7 @@ module.exports = (function() {
 		timeline.push({
 			type: "call-function",
 			func: function() {
+        params.currentProgress = 0;
 				$("#progress-header").hide();
 				LITW.utils.showSlide("break");
 				LITW.tracking.recordCheckpoint("mid-trial break");
@@ -197,10 +195,68 @@ module.exports = (function() {
 			display_element: $("#break")
 		});
 
-		// 6. TRIAL STIMS, PHASE 2
-		// re-shuffle stim order
-		params.stims1 = LITW.utils.shuffleArrays(params.stims1);
-		params.stims1.forEach(function(stim, index) {
+    // Instructions part 2
+		timeline.push({
+			type: "display-slide",
+            display_element: $("#instructions"),
+			name: "instructions",
+            template: instructionsPart2Template({withTouch: window.litwWithTouch})
+		});
+
+    // PRACTICE for trial 2
+		// loop through practice stims and register them with the jsPsych timeline
+		params.practiceStims2.forEach(
+      function(stim, index) {
+  			// record tracking information and update progress counter
+  			timeline.push({
+  				type: "call-function",
+  				func: function() {
+  					$("#progress-header").html(progressTemplate({
+  						msg: C.progressMsg,
+  						progress: ++params.currentProgress,
+  						total: params.practiceStims2.length
+  					}))
+  					.show();
+
+  					LITW.utils.showSlide("trials");
+  					LITW.tracking.recordCheckpoint("practice-" + (index + 1));
+  				}
+  			});
+
+  			stim.withTouch = window.litwWithTouch;
+  			timeline.push(stim);
+
+  			// register a function to submit data as soon
+  			// as this trial is completed
+  			timeline.push({
+  				type: "call-function",
+  				func: submitData
+  			});
+		  }
+    );
+
+		// PRE-TRIAL BREAK
+		timeline.push({
+			type: "call-function",
+			func: function() {
+				params.currentProgress = 0;
+				$("#progress-header").hide();
+				LITW.utils.showSlide("break");
+				LITW.tracking.recordCheckpoint("pre-trial break");
+			}
+		})
+		timeline.push({
+			type: "display-info",
+			name: "preTrialBreak",
+			content: C.preTrial,
+			withTouch: window.litwWithTouch,
+			display_element: $("#break")
+		});
+
+
+    // TRIAL 2
+		params.stims2 = LITW.utils.shuffleArrays(params.stims2);
+		params.stims2.forEach(function(stim, index) {
 
 			// record tracking information
 			timeline.push({
@@ -209,7 +265,7 @@ module.exports = (function() {
 					$("#progress-header").html(progressTemplate({
 						msg: C.progressMsg,
 						progress: ++params.currentProgress,
-						total: params.stims1.length * 2
+						total: params.stims2.length
 					}))
 					.show();
 
@@ -348,6 +404,8 @@ module.exports = (function() {
 		// trials and the real trials
 		params.practiceStims1 = C.practiceWebpages;
 		params.stims1 = C.trialWebpages;
+    params.practiceStims2 = C.practiceScenarios;
+    params.stims2 = C.trialScenarios;
 
 		// shuffle the order of the trials
 		params.practiceStims1 = LITW.utils.shuffleArrays(params.practiceStims1);
