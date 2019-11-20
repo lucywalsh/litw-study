@@ -30,8 +30,16 @@
 
     "litw-instruct-header": "Instructions: Part 1",
     "litw-instruct-body-1-p1": "You'll be shown screenshots of websites like this:",
-    "litw-instruct-body-2-p1": "Your job is to select which types of data you think this website is collecting.",
+    "litw-instruct-body-2-p1": "Your job is to select which types of data you'd be happy to provide to the website.",
     "litw-instruct-body-2-p2": "Let's give it a try!",
-    "litw-instruct-body-2-p1-touch": "Your job is to decide which picture you identify with most. You'll do this by tapping on the image you identify with to select it.",
-    "litw-instruct-body-2-p2-touch": "After your choice, we will run some hyper-complicated algorithms to predict your future. Let's give it a try!"
+    "litw-instruct-body-2-p1-touch": "Your job is to decide which types of data you'd be happy to provide by tapping 'Yes' or 'No'.",
+    "litw-instruct-body-2-p2-touch": "Let's give it a try!",
+
+    "litw-instruct-header-2": "Instructions: Part 2",
+    "litw-instruct-body-1-p1-2": "You'll be shown a scenario of something you might come across when browsing online, like this one:",
+    "litw-instruct-body-2-p1-2": "Your job is to rate how concerning you would find this scenario if it happened to you.",
+    "litw-instruct-body-2-p2-2": "Let's give it a try!",
+    "litw-instruct-body-2-p1-touch-2": "Your job is to rate how concerning you would find this scenario by tapping the statement that most applies.",
+    "litw-instruct-body-2-p2-touch-2": "Let's give it a try!"
+
 }
