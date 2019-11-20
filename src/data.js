@@ -12,6 +12,89 @@
  * the code, contact us at info@labinthewild.org
  *************************************************************/
 
+var data_questions = [
+  {"prompt": "Would you provide this website with your financial information?",
+  "options": ["Yes","No"],
+  "horizontal":true},
+  {"prompt": "Would you provide your location to this website?",
+  "options": ["Yes","No"],
+  "horizontal":true},
+  {"prompt": "Would you provide your full name to this website?",
+  "options": ["Yes","No"],
+  "horizontal":true},
+  {"prompt": "Would you provide your biometric data to this website?",
+  "options": ["Yes","No"],
+  "horizontal":true},
+  {"prompt": "Would you provide your passport number to this webiste?",
+  "options": ["Yes","No"],
+  "horizontal":true},
+  {"prompt": "Would you provide the content of your texts, emails or messages to this website?",
+  "options": ["Yes","No"],
+  "horizontal":true},
+  {"prompt": "Would you provide your browsing history on other websites to this website?",
+  "options": ["Yes","No"],
+  "horizontal":true},
+  {"prompt": "Would you provide information about your device to this website?",
+  "options": ["Yes","No"],
+  "horizontal":true},
+  {"prompt": "Would you provide your contact list to this website?",
+  "options": ["Yes","No"],
+  "horizontal":true},
+  {"prompt": "Would you provide your place of employment to this website?",
+  "options": ["Yes","No"],
+  "horizontal":true},
+  {"prompt": "Would you provide your racial/ethnic origin to this website?",
+  "options": ["Yes","No"],
+  "horizontal":true},
+  {"prompt": "Would you provide your likes and interests to this website?",
+  "options": ["Yes","No"],
+  "horizontal":true},
+  {"prompt": "Would you provide your poltiical views to this website?",
+  "options": ["Yes","No"],
+  "horizontal":true},
+  {"prompt": "Would you provide your religious beliefs to this website?",
+  "options": ["Yes","No"],
+  "horizontal":true},
+]
+
+function rand_questions(questions, num_qs){
+  randomqs = [];
+  for(i=0;i<num_qs;i++){
+    randomqs.push(questions[Math.floor(Math.random()*questions.length)])
+  };
+  return randomqs;
+}
+
+var website_images = [
+  "<img src='img/websites/allrecipes.png' style='width:100%;height:50%'/>",
+  "<img src='img/websites/amazon.png' style='width:100%;height:50%'/>",
+  "<img src='img/websites/apple.png' style='width:100%;height:50%'/>",
+  "<img src='img/websites/bbc.png' style='width:100%;height:50%'/>",
+  "<img src='img/websites/craigslist.png' style='width:100%;height:50%'/>",
+  "<img src='img/websites/dictionary.png' style='width:100%;height:50%'/>",
+  "<img src='img/websites/ebay.png' style='width:100%;height:50%'/>",
+  "<img src='img/websites/expedia.png' style='width:100%;height:50%'/>",
+  "<img src='img/websites/facebook.png' style='width:100%;height:50%'/>",
+  "<img src='img/websites/google_maps.png' style='width:100%;height:50%'/>",
+  "<img src='img/websites/google_play.png' style='width:100%;height:50%'/>",
+  "<img src='img/websites/google.png' style='width:100%;height:50%'/>",
+  "<img src='img/websites/gov_uk.png' style='width:100%;height:50%'/>",
+  "<img src='img/websites/imdb.png' style='width:100%;height:50%'/>",
+  "<img src='img/websites/instagram.png' style='width:100%;height:50%'/>",
+  "<img src='img/websites/linkedin.png' style='width:100%;height:50%'/>",
+  "<img src='img/websites/met_office.png' style='width:100%;height:50%'/>",
+  "<img src='img/websites/ny_times.png' style='width:100%;height:50%'/>",
+  "<img src='img/websites/reddit.png' style='width:100%;height:50%'/>",
+  "<img src='img/websites/tripadvisor.png' style='width:100%;height:50%'/>",
+  "<img src='img/websites/twitter.png' style='width:100%;height:50%'/>",
+  "<img src='img/websites/wikipedia.png' style='width:100%;height:50%'/>",
+  "<img src='img/websites/youtube.png' style='width:100%;height:50%'/>",
+]
+function rand_website_trial(){
+  rand_website_image = website_images[Math.floor(Math.random()*website_images.length)];
+  return {"type":"survey-multi-choice","image":rand_website_image,"questions":rand_questions(data_questions,3),"randomize_question_order":true}
+}
+
 module.exports = {
 	"preTrial": {
 		"header": "Nice job!",
@@ -29,47 +112,23 @@ module.exports = {
 	},
 	"practiceWebpages": [
 		{
-			"type": "survey-multi-select",
-      "questions": {
-        "prompt": "Which types of data would you be happy to provide this website? <span class='bolded-blue'>(Click on a type of data to select it. Select as many as you like.)</span>",
-        "options": ['Email address','Payment information','Likes and dislikes','Protected characteristics'],
-        "horiztonal":true,
-        "required": true,
-        "name":"Data"
-      }
-			//"stimulus": "<img src='img/websites/twitter.png' style='width:100%;height:50%'/>",
-			//"is_html": true,
-			//"options": ['Email address','Payment information','Likes and dislikes','Protected characteristics'],
-			//"prompt": "Which types of data would you be happy to provide this website? <span class='bolded-blue'>(Click on a type of data to select it. Select as many as you like.)</span>",
-			//"promptWithTouch": "Which data would you be happy to provide to this website? <span class='bolded-blue'>(Tap on a type of data to select it. Select as many as you like.)</span>"
+      "type":"survey-multi-choice",
+      "image":"<img src='img/websites/twitter.png' style='width:100%;height:50%'/>",
+      "questions":[
+          {"prompt": "Would you provide this website with your financial information?",
+          "options": ["Yes","No"],
+          "horizontal":true}
+      ]
 		}
 	],
 	"trialWebpages": [
-    {
-			"type": "single-stim",
-			"stimulus": "<img src='img/websites/facebook.png'/>",
-			"is_html": true,
-			"choices": [49, 50], // the numbers 1 - 2
-			"prompt": "Which data would you be happy to provide this website? <span class='bolded-blue'>(Click on a type of data to select it. Select as many as you like.)</span>",
-			"promptWithTouch": "Which data would you be happy to provide to this website? <span class='bolded-blue'>(Tap on a type of data to select it. Select as many as you like.)</span>"
-		},
-    {
-			"type": "single-stim",
-			"stimulus": "<img src='img/websites/amazon.png'/>",
-			"is_html": true,
-			"choices": [49, 50], // the numbers 1 - 2
-			"prompt": "Which data would you be happy to provide this website? <span class='bolded-blue'>(Click on a type of data to select it. Select as many as you like.)</span>",
-			"promptWithTouch": "Which data would you be happy to provide to this website? <span class='bolded-blue'>(Tap on a type of data to select it. Select as many as you like.)</span>"
-		},
-    {
-			"type": "single-stim",
-			"stimulus": "<img src='img/websites/google_maps.png'/>",
-			"is_html": true,
-			"choices": [49, 50], // the numbers 1 - 2
-			"prompt": "Which data would you be happy to provide this website? <span class='bolded-blue'>(Click on a type of data to select it. Select as many as you like.)</span>",
-			"promptWithTouch": "Which data would you be happy to provide to this website? <span class='bolded-blue'>(Tap on a type of data to select it. Select as many as you like.)</span>"
-		},
-	],
+    rand_website_trial(),
+    rand_website_trial(),
+    rand_website_trial(),
+    rand_website_trial(),
+    rand_website_trial(),
+    rand_website_trial(),
+  ],
 	"loadingMsg": "Loading resources:",
 	"progressMsg": "Progress:",
 	"results": {
