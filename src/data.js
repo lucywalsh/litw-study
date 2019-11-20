@@ -77,10 +77,9 @@ var website_images = [
   "<img src='img/websites/facebook.png' style='width:100%;height:50%'/>",
   "<img src='img/websites/google_maps.png' style='width:100%;height:50%'/>",
   "<img src='img/websites/google_play.png' style='width:100%;height:50%'/>",
-  "<img src='img/websites/google.png' style='width:100%;height:50%'/>",
   "<img src='img/websites/gov_uk.png' style='width:100%;height:50%'/>",
   "<img src='img/websites/imdb.png' style='width:100%;height:50%'/>",
-  "<img src='img/websites/instagram.png' style='width:100%;height:50%'/>",
+  "<img src='img/websites/instagram.png' style='width:50%;height:50%'/>",
   "<img src='img/websites/linkedin.png' style='width:100%;height:50%'/>",
   "<img src='img/websites/met_office.png' style='width:100%;height:50%'/>",
   "<img src='img/websites/ny_times.png' style='width:100%;height:50%'/>",
@@ -95,11 +94,19 @@ function rand_website_trial(){
   return {"type":"survey-multi-choice","image":rand_website_image,"questions":rand_questions(data_questions,3),"randomize_question_order":true}
 }
 
+var scale_1 = [
+  "Not concerning at all",
+  "Not very concerning",
+  "Neither concerning nor not concerning",
+  "Quite concerning",
+  "Very concerning"
+];
+
 module.exports = {
 	"preTrial": {
 		"header": "Nice job!",
 		"body": [
-			"Now that you have the hang of it, we'll start the study.",
+			"Now that you have the hang of it, we'll start the trial.",
 			"Click the arrow or press the <strong>spacebar</strong> when you are ready to begin."
 		],
 		"bodyWithTouch": [
@@ -110,6 +117,7 @@ module.exports = {
 	"midTrial": {
 		"header": "You're doing great! Take a breather."
 	},
+  // trial 1 - webpages
 	"practiceWebpages": [
 		{
       "type":"survey-multi-choice",
@@ -128,6 +136,36 @@ module.exports = {
     rand_website_trial(),
     rand_website_trial(),
     rand_website_trial(),
+    rand_website_trial(),
+  ],
+  // trial 2 - scenarios
+  "practiceScenarios":[
+    {
+      "type": "survey-likert",
+      "questions": [
+        {"prompt": "<img src='img/scenarios/scenario-1.png' style='width:100%;height:50%'/>", "labels": scale_1}
+      ]
+    }
+  ],
+  "trialScenarios":[
+    {
+      "type": "survey-likert",
+      "questions": [
+        {"prompt": "<img src='img/scenarios/scenario-2.png' style='width:100%;height:50%'/>", "labels": scale_1}
+      ]
+    },
+    {
+      "type": "survey-likert",
+      "questions": [
+        {"prompt": "<img src='img/scenarios/scenario-3.png' style='width:100%;height:50%'/>", "labels": scale_1}
+      ]
+    },
+    {
+      "type": "survey-likert",
+      "questions": [
+        {"prompt": "<img src='img/scenarios/scenario-4.png' style='width:100%;height:50%'/>", "labels": scale_1}
+      ]
+    },
   ],
 	"loadingMsg": "Loading resources:",
 	"progressMsg": "Progress:",
