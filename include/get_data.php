@@ -1,4 +1,5 @@
 <?php
+/*
 require_once("config.php");
 
 $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -46,5 +47,5 @@ $stmt->close();
 $f_data = fopen('db_data.json', 'w');
 fwrite($f_data, json_encode($result));
 fclose($f_data);
-
+*/
 ?>

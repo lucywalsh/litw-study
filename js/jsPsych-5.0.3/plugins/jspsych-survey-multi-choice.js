@@ -32,6 +32,8 @@ jsPsych.plugins['survey-multi-choice'] = (function() {
     // it with the output of the function
     trial = jsPsych.pluginAPI.evaluateFunctionParameters(trial);
 
+    display_element.append(trial.image)
+
     // form element
     var trial_form_id = _join(plugin_id_name, "form");
     display_element.append($('<form>', {
@@ -64,11 +66,11 @@ jsPsych.plugins['survey-multi-choice'] = (function() {
 
       // add question text
       $(question_selector).append(
-        '<p class="' + plugin_id_name + '-text survey-multi-choice">' + trial.questions[i] + '</p>'
+        '<p class="' + plugin_id_name + '-text survey-multi-choice">' + trial.questions[i].prompt + '</p>'
       );
 
       // create option radio buttons
-      for (var j = 0; j < trial.options[i].length; j++) {
+      for (var j = 0; j < trial.questions[i].options.length; j++) {
         var option_id_name = _join(plugin_id_name, "option", i, j),
           option_id_selector = '#' + option_id_name;
 
@@ -79,12 +81,12 @@ jsPsych.plugins['survey-multi-choice'] = (function() {
         }));
 
         // add label and question text
-        var option_label = '<label class="' + plugin_id_name + '-text">' + trial.options[i][j] + '</label>';
+        var option_label = '<label class="' + plugin_id_name + '-text">' + trial.questions[i].options[j] + '</label>';
         $(option_id_selector).append(option_label);
 
         // create radio button
         var input_id_name = _join(plugin_id_name, 'response', i);
-        $(option_id_selector + " label").prepend('<input type="radio" name="' + input_id_name + '" value="' + trial.options[i][j] + '">');
+        $(option_id_selector + " label").prepend('<input type="radio" name="' + input_id_name + '" value="' + trial.questions[i].options[j] + '">');
       }
 
       if (trial.required && trial.required[i]) {
