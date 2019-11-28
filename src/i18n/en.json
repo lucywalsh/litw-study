@@ -40,6 +40,15 @@
     "litw-instruct-body-2-p1-2": "Your job is to rate how concerning you would find this scenario if it happened to you.",
     "litw-instruct-body-2-p2-2": "Let's give it a try!",
     "litw-instruct-body-2-p1-touch-2": "Your job is to rate how concerning you would find this scenario by tapping the statement that most applies.",
-    "litw-instruct-body-2-p2-touch-2": "Let's give it a try!"
+    "litw-instruct-body-2-p2-touch-2": "Let's give it a try!",
+
+    "website-use-header":"How often do you use these websites?",
+    "website-use-body-1-p1":"Select the option that fits best.",
+    "websiteuse-answer1-1":"I don't know what this website is",
+    "websiteuse-answer1-2":"I know what this website is but I don't use it",
+    "websiteuse-answer1-3":"I use this website somtimes",
+    "websiteuse-answer1-4":"I used to use this website a lot but not anymore",
+    "websiteuse-answer1-5":"I use this website regularly"
+
 
 }
