@@ -24,6 +24,7 @@ var instructionsPart2Template = require("../templates/instructions2.html");
 var loadingTemplate = require("../templates/loading.html");
 var resultsTemplate = require("../templates/results.html");
 var progressTemplate = require("../templates/progress.html");
+var websiteUseTemplate = require("../templates/website_use.html");
 var i18n = require("../js/i18n");
 require("./jspsych-display-info");
 require("./jspsych-display-slide");
@@ -89,6 +90,51 @@ module.exports = (function() {
 
 	initJsPsych = function() {
 		// ******* BEGIN STUDY PROGRESSION ******** //
+
+    //website use survey
+    timeline.push({
+			type: "display-slide",
+            display_element: $("#websiteUseSurvey"),
+			name: "websiteUseSurvey",
+            template: websiteUseTemplate({withTouch: window.litwWithTouch}),
+      finish: function () {
+        var surveyData = {"dataType":"websiteUseSurvey"};
+        surveyData["accuweather"] = $("input[name=accuweather]:checked").val();
+        surveyData["allrecipes"] = $("input[name=allrecipes]:checked").val();
+        surveyData["amazon"] = $("input[name=amazon]:checked").val();
+        surveyData["apple"] = $("input[name=apple]:checked").val();
+        surveyData["bbc"] = $("input[name=bbc]:checked").val();
+        surveyData["craigslist"] = $("input[name=craigslist]:checked").val();
+        surveyData["dictionary"] = $("input[name=dictionary]:checked").val();
+        surveyData["ebay"] = $("input[name=ebay]:checked").val();
+        surveyData["expedia"] = $("input[name=expedia]:checked").val();
+        surveyData["facebook"] = $("input[name=facebook]:checked").val();
+        surveyData["gmail"] = $("input[name=gmail]:checked").val();
+        surveyData["google"] = $("input[name=google]:checked").val();
+        surveyData["google-maps"] = $("input[name=google-maps]:checked").val();
+        surveyData["google-play"] = $("input[name=google-play]:checked").val();
+        surveyData["govuk"] = $("input[name=govuk]:checked").val();
+        surveyData["imdb"] = $("input[name=imdb]:checked").val();
+        surveyData["instagram"] = $("input[name=instagram]:checked").val();
+        surveyData["linkedin"] = $("input[name=linkedin]:checked").val();
+        surveyData["metoffice"] = $("input[name=metoffice]:checked").val();
+        surveyData["netflix"] = $("input[name=netflix]:checked").val();
+        surveyData["nytimes"] = $("input[name=nytimes]:checked").val();
+        surveyData["outlook"] = $("input[name=outlook]:checked").val();
+        surveyData["paypal"] = $("input[name=paypal]:checked").val();
+        surveyData["reddit"] = $("input[name=reddit]:checked").val();
+        surveyData["tripadvisor"] = $("input[name=tripadvisor]:checked").val();
+        surveyData["twitter"] = $("input[name=twitter]:checked").val();
+        surveyData["usagov"] = $("input[name=usagov]:checked").val();
+        surveyData["whatsapp"] = $("input[name=whatsapp]:checked").val();
+        surveyData["wikipedia"] = $("input[name=wikipedia]:checked").val();
+        surveyData["yahoo"] = $("input[name=yahoo]:checked").val();
+        surveyData["youtube"] = $("input[name=youtube]:checked").val();
+        console.log(surveyData);
+
+        //LITW.data.submitStudyData(surveyData);
+      }
+    });
 
 		// Instructions part 1
 		timeline.push({
