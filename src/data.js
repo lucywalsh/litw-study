@@ -172,19 +172,19 @@ module.exports = {
     {
       "type": "survey-likert",
       "questions": [
-        {"prompt": "<img src='img/scenarios/scenario-2.png' style='width:100%;height:50%'/>", "labels": scale_1}
+        {"prompt": "<img class='scenario' id='skyscanner' src='img/scenarios/scenario-2.png' style='width:80%;height:50%'/>", "labels": scale_1}
       ]
     },
     {
       "type": "survey-likert",
       "questions": [
-        {"prompt": "<img src='img/scenarios/scenario-3.png' style='width:100%;height:50%'/>", "labels": scale_1}
+        {"prompt": "<img class='scenario' id='common-living' src='img/scenarios/scenario-3.png' style='width:80%;height:50%'/>", "labels": scale_1}
       ]
     },
     {
       "type": "survey-likert",
       "questions": [
-        {"prompt": "<img src='img/scenarios/scenario-4.png' style='width:100%;height:50%'/>", "labels": scale_1}
+        {"prompt": "<img class='scenario' id='marriott' src='img/scenarios/scenario-4.png' style='width:80%;height:50%'/>", "labels": scale_1}
       ]
     },
   ],
