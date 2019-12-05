@@ -83,6 +83,16 @@ module.exports = (function() {
       expandable: true,
     })
 		.add("education")
+    .add("dataprivacy",{
+      style:"radio",
+      prompt:"Would you like to know more about how your data is used online?",
+      options: ["Yes","No"]
+    })
+    .add("why",{
+      style:"dropdown",
+      prompt:"What is the the main reason?",
+      options:["I think it would be interesting","I'm curious","I am concerned about how my data is used", "I don't feel well-informed", "I think I am well-informed","I don't care enough", "It would worry me too much", "Ignorance is bliss"]
+    })
 		.render(startTrials);
 
 		LITW.utils.showSlide("demographics");
