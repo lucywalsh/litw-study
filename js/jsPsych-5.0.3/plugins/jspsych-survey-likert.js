@@ -59,6 +59,7 @@ jsPsych.plugins['survey-likert'] = (function() {
 
       // create object to hold responses
       var question_data = {};
+      var scenario={};
       $("#jspsych-survey-likert-form .jspsych-survey-likert-opts").each(function(index) {
         var id = $(this).data('radio-group');
         var response = $('input[name="' + id + '"]:checked').val();
@@ -69,11 +70,16 @@ jsPsych.plugins['survey-likert'] = (function() {
         obje[id] = response;
         $.extend(question_data, obje);
       });
+      $("#jspsych-survey-likert-form .jspsych-survey-likert-statement .scenario").each(function(index){
+        console.log($(this).context.id);
+        scenario = $(this).context.id;
+      });
 
       // save data
       var trial_data = {
         "rt": response_time,
-        "responses": JSON.stringify(question_data)
+        "responses": JSON.stringify(question_data),
+        "scenario": JSON.stringify(scenario)
       };
 
       display_element.html('');
