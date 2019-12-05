@@ -170,9 +170,9 @@ module.exports = {
 	"loadingMsg": "Loading resources:",
 	"progressMsg": "Progress:",
 	"results": {
-		"header": "Have a look at your results!",
-		"predictionMsg": "Based on your responses, we think you might like to take this cat home!",
-		"predictionMsgBoth": "Based on your responses, we think you might like to take both these cats home!"
+		"header": "Based on your answers, your risk score is: ",
+		"riskyMsg": "Your data might be at risk while you browse. Be aware of the kinds of information sites collect from you - take a look at the privacy policies on websites, or download some of these tools to help protect your data:",
+		"notRiskyMsg": "Your data probably isn't at too much risk while you browse - great! It might still be worth taking a look at some of these tools to keep yourself as safe as possible: "
 	},
   // trial 2 - webpages
 	"practiceWebpages": [
@@ -209,6 +209,5 @@ module.exports = {
       "choices": ['y','n']
     }
   ],
-	"resultsExplanation": ["The task you completed in this study is one measure of cat preference [1]. We determined your cat preference based on the set of features exhibited by the cats you chose, such as posture.", "We are interested in learning whether cat preferences are consistent across cultures. We will report on this result on our blog."],
-	"citations": ["[1] Buttons, C.W., Patches, R.A. (2012). Evaluation of a method for determining cat preference: the cat selection task. Journal of Cats: Applied, 8:2, 75-84."]
+	"resultsExplanation": ["The tasks you completed in this study helped us to understand your attitude towards data privacy online.", "We are interested in learning more about this in order to build a product to help people protect their data online."],
 };

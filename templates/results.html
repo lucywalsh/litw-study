@@ -1,27 +1,19 @@
 
 <!-- Template for the results page -->
-<h2 class="bolded-blue">{{content.header}}</h2>
+<h2 class="bolded-blue">{{content.header}}{{riskFactor}}/10</h2>
 
-{{#if bothCats}}
-	<p>{{content.predictionMsgBoth}}</p>
+{{#if risky}}
+	<p>{{content.riskyMsg}}</p>
 {{else}}
-	<p>{{content.predictionMsg}}</p>
+	<p>{{content.notRiskyMsg}}</p>
 {{/if}}
 
-<div class="prediction-img-container">
-	{{#each whichCat}}
-		<img class="prediction-img" src="img/{{this}}" />
-	{{/each}}
+<div class="tool-recommendations">
+	<p>Insert tools here</p>
 </div>
 
 <div class="results-explanation">
 	{{#each resultsExplanation}}
-		<p>{{this}}</p>
-	{{/each}}
-</div>
-
-<div class="citations">
-	{{#each citations}}
 		<p>{{this}}</p>
 	{{/each}}
 </div>
