@@ -565,10 +565,12 @@ module.exports = (function() {
 
 		// Load the trial configuration data for the practice
 		// trials and the real trials
-		params.practiceStims1 = C.practiceWebpages;
-		params.stims1 = C.trialWebpages;
-    params.practiceStims2 = C.practiceScenarios;
-    params.stims2 = C.trialScenarios;
+		params.practiceStims1 = C.practiceScenarios;
+		params.stims1 = C.trialScenarios;
+    params.practiceStims2 = C.practiceWebpages;
+    params.stims2 = C.trialWebpages;
+    params.practiceStims3 = C.practiceTools;
+    params.stims3 = C.trialTools;
 
 		// shuffle the order of the trials
 		params.practiceStims1 = LITW.utils.shuffleArrays(params.practiceStims1);
