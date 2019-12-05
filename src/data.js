@@ -138,33 +138,12 @@ module.exports = {
 	"midTrial": {
 		"header": "You're doing great! Take a breather."
 	},
-  // trial 1 - webpages
-	"practiceWebpages": [
-		{
-      "type":"survey-multi-choice",
-      "image":"<img src='img/websites/twitter.png' style='width:100%;height:50%'/>",
-      "questions":[
-          {"prompt": "Would you provide this website with your financial information?",
-          "options": ["Yes","No"],
-          "horizontal":true}
-      ]
-		}
-	],
-	"trialWebpages": [
-    rand_website_trial(),
-    rand_website_trial(),
-    rand_website_trial(),
-    rand_website_trial(),
-    rand_website_trial(),
-    rand_website_trial(),
-    rand_website_trial(),
-  ],
-  // trial 2 - scenarios
+  // trial 1 - scenarios
   "practiceScenarios":[
     {
       "type": "survey-likert",
       "questions": [
-        {"prompt": "<img src='img/scenarios/scenario-1.png' style='width:100%;height:50%'/>", "labels": scale_1}
+        {"prompt": "<img class='scenario' id='netflix' src='img/scenarios/scenario-1.png' style='width:80%;height:50%'/>", "labels": scale_1}
       ]
     }
   ],
@@ -195,6 +174,41 @@ module.exports = {
 		"predictionMsg": "Based on your responses, we think you might like to take this cat home!",
 		"predictionMsgBoth": "Based on your responses, we think you might like to take both these cats home!"
 	},
+  // trial 2 - webpages
+	"practiceWebpages": [
+		{
+      "type":"survey-multi-choice",
+      "image":"<img src='img/websites/twitter.png' style='width:80%;height:50%'/>",
+      "questions":[
+          {"prompt": "Would you provide this website with your financial information?",
+          "options": ["Yes","No"],
+          "horizontal":true}
+      ]
+		}
+	],
+	"trialWebpages": [
+    rand_website_trial(),
+    rand_website_trial(),
+    rand_website_trial(),
+    rand_website_trial(),
+    rand_website_trial(),
+  ],
+  "practiceTools":[
+    {
+      "type":"single-stim",
+      "stimulus":"VPN",
+      "prompt":"Do you use this tool? Press y or n on your keyboard",
+      "choices": ['y','n']
+		}
+  ],
+  "trialTools":[
+    {
+      "type":"single-stim",
+      "stimulus":"Adblocker",
+      "prompt":"Do you use this tool? Press y or n on your keyboard",
+      "choices": ['y','n']
+    }
+  ],
 	"resultsExplanation": ["The task you completed in this study is one measure of cat preference [1]. We determined your cat preference based on the set of features exhibited by the cats you chose, such as posture.", "We are interested in learning whether cat preferences are consistent across cultures. We will report on this result on our blog."],
 	"citations": ["[1] Buttons, C.W., Patches, R.A. (2012). Evaluation of a method for determining cat preference: the cat selection task. Journal of Cats: Applied, 8:2, 75-84."]
 };
