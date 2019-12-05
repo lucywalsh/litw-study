@@ -21,6 +21,7 @@ var LITW_STUDY_CONTENT = require("./data");
 var irbTemplate = require("../templates/irb.html");
 var instructionsPart1Template = require("../templates/instructions.html");
 var instructionsPart2Template = require("../templates/instructions2.html");
+var instructionsPart3Template = require("../templates/instructions3.html");
 var loadingTemplate = require("../templates/loading.html");
 var resultsTemplate = require("../templates/results.html");
 var progressTemplate = require("../templates/progress.html");
@@ -250,7 +251,7 @@ module.exports = (function() {
 			name: "midTrialBreak",
 			display_element: $("#break")
 		});
-
+/*
     // Instructions part 2
 		timeline.push({
 			type: "display-slide",
@@ -340,6 +341,112 @@ module.exports = (function() {
 			});
 		});
 
+		// MID-TRIAL BREAK
+		timeline.push({
+			type: "call-function",
+			func: function() {
+        params.currentProgress = 0;
+				$("#progress-header").hide();
+				LITW.utils.showSlide("break");
+				LITW.tracking.recordCheckpoint("mid-trial break");
+			}
+		});
+		timeline.push({
+			type: "display-info",
+			content: C.midTrial,
+			name: "midTrialBreak",
+			display_element: $("#break")
+		});
+
+		// Instructions part 3
+		timeline.push({
+			type: "display-slide",
+            display_element: $("#instructions"),
+			name: "instructions",
+            template: instructionsPart3Template({withTouch: window.litwWithTouch})
+		});
+
+    // PRACTICE for trial 3
+		// loop through practice stims and register them with the jsPsych timeline
+		params.practiceStims3.forEach(
+      function(stim, index) {
+  			// record tracking information and update progress counter
+  			timeline.push({
+  				type: "call-function",
+  				func: function() {
+  					$("#progress-header").html(progressTemplate({
+  						msg: C.progressMsg,
+  						progress: ++params.currentProgress,
+  						total: params.practiceStims2.length
+  					}))
+  					.show();
+
+  					LITW.utils.showSlide("trials");
+  					LITW.tracking.recordCheckpoint("practice-" + (index + 1));
+  				}
+  			});
+
+  			stim.withTouch = window.litwWithTouch;
+  			timeline.push(stim);
+
+  			// register a function to submit data as soon
+  			// as this trial is completed
+  			timeline.push({
+  				type: "call-function",
+  				func: submitData
+  			});
+		  }
+    );
+
+		// PRE-TRIAL BREAK
+		timeline.push({
+			type: "call-function",
+			func: function() {
+				params.currentProgress = 0;
+				$("#progress-header").hide();
+				LITW.utils.showSlide("break");
+				LITW.tracking.recordCheckpoint("pre-trial break");
+			}
+		})
+		timeline.push({
+			type: "display-info",
+			name: "preTrialBreak",
+			content: C.preTrial,
+			withTouch: window.litwWithTouch,
+			display_element: $("#break")
+		});
+
+
+    // TRIAL 3
+		params.stims3 = LITW.utils.shuffleArrays(params.stims3);
+		params.stims3.forEach(function(stim, index) {
+
+			// record tracking information
+			timeline.push({
+				type: "call-function",
+				func: function() {
+					$("#progress-header").html(progressTemplate({
+						msg: C.progressMsg,
+						progress: ++params.currentProgress,
+						total: params.stims3.length
+					}))
+					.show();
+
+					LITW.utils.showSlide("trials");
+					LITW.tracking.recordCheckpoint("trials-3-" + (index + 1));
+				}
+			});
+
+			timeline.push(stim);
+
+			// register a function to submit data as soon
+			// as this trial is completed
+			timeline.push({
+				type: "call-function",
+				func: submitData
+			});
+		});
+*/
 		// ******* END STUDY PROGRESSION ******** //
 	},
 
