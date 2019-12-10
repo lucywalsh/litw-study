@@ -124,10 +124,54 @@ jsPsych.plugins['survey-multi-choice'] = (function() {
         $.extend(question_data, obje);
       });
 
+      var questions = {
+        "Would you provide this website with the name of your bank?":"bank",
+        "Would you provide your current location to this website?":"location",
+        "Would you provide your full name to this website?":"fullname",
+        "Would you provide your fingerprint to this website?":"fingerprint",
+        "Would you provide a scan of your face to this website?":"face",
+        "Would you provide your passport number to this website?":"passport",
+        "Would you provide the content of your emails to this website?":"emails",
+        "Would you provide the content of your personal messages to this website?":"messages",
+        "Would you provide your browsing history on other websites to this website?":"history",
+        "Would you provide the kind of device you're using to this site?":"device",
+        "Would you provide the the operating system you're using to this website?":"operatingsystem",
+        "Would you provide a unique ID of your device to this website?":"deviceID",
+        "Would you provide your contact list to this website?":"contacts",
+        "Would you provide your place of employment to this website?":"employment",
+        "Would you provide your racial/ethnic origin to this website?":"race",
+        "Would you provide information your hobbies or interests to this website?":"hobbies",
+        "Would you provide information about who you're going to vote for to this website?":"vote",
+        "Would you provide information about whether you are left or right leaning politically to this website?":"lean",
+        "Would you provide information about your sexuality to this website?":"sexuality",
+        "Would you provide information about your disability status to this website?":"disability",
+        "Would you provide your photos to this website?":"photos",
+        "Would you provide your home address to this website?":"address",
+        "Would you provide information about the products you like to this website?":"products",
+        "Would you provide your dietary requirements to this website?":"dietary",
+        "Would you provide your religious beliefs to this website?":"religion",
+        "Would you provide your credit card number to this website?":"creditcard",
+        "Would you provide this website with your bank account number?":"bankaccount"
+      };
+
+      var questionText = {};
+      var question={};
+      $("div." + plugin_id_name + "-question .jspsych-survey-multi-choice-text.survey-multi-choice").each(function(index) {
+        questionText = $(this).context.innerText;
+        question = questions[questionText];
+      });
+
+      var website = {};
+      $("#trials .website").each(function(index){
+        website = $(this).context.id;
+      });
+
       // save data
       var trial_data = {
         "rt": response_time,
-        "responses": JSON.stringify(question_data)
+        "responses": JSON.stringify(question_data),
+        "question": JSON.stringify(question),
+        "website": JSON.stringify(website)
       };
 
       display_element.html('');
