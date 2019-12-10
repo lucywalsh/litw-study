@@ -478,38 +478,59 @@ module.exports = (function() {
 		LITW.data.submitComments(commentsData);
 
 		// get the trial data from jsPsych
-		var studyData = jsPsych.data.getTrialsOfType("single-stim"),
-		whichCat;
+		var studyData = jsPsych.data.getTrialsOfType("survey-likert");
+    var studyData2 = jsPsych.data.getTrialsOfType("survey-multi-choice");
+    console.log(studyData);
+    console.log(studyData2);
 
-		// strip out the data generated from the practice trial
-		studyData.splice(0, params.practiceStims1.length);
+    var riskFactor = 0.0;
+    //trial 1
+		studyData.filter(function(item) {
+      var levelOfConcern = parseInt(item.responses[7]);
+      //naive risk factor calculation
+      if(levelOfConcern<3){
+        riskFactor=riskFactor+0.33;
+      }
+		});
 
-		var numNiceCats = studyData.filter(function(item) {
+    //trial 2
+    studyData2.filter(function(item){
+      var website = item.website;
+      var questions = item.questions.split(",");
+      var responses = item.responses.split(/,|:/);
+      for (var j=0;j<responses.length;j++){
+        responses[j] = responses[j].replace("{","");
+        responses[j] = responses[j].replace("}","");
+        responses[j] = responses[j].replace(/['"]+/g, '');
+        if(responses[j] == "Q0" || responses[j] == "Q1" || responses[j] == "Q2"){
+          responses.splice(j,1);
+        }
+      }
 
-			// the nice cats are always on the right!
-			return item.key_press === 50;
-		}).length;
-		var numMeanCats = studyData.filter(function(item) {
+      for(var i=0;i<questions.length;i++){
+        questions[i] = questions[i].replace("[","");
+        questions[i] = questions[i].replace("]","");
+        questions[i] = questions[i].replace(/['"]+/g, '');
+        //naive risk factor calculation
+        if(responses[i].includes("Yes")){
+          riskFactor=riskFactor+0.33;
+        }
+      }
+    });
 
-			// the mean cats are always on the left!
-			return item.key_press === 49;
-		}).length;
-
-		if (numNiceCats === numMeanCats) {
-			whichCat = ["cat-nice.jpg", "cat-mean.jpg"];
-		} else {
-			whichCat = (numNiceCats > numMeanCats) ?
-				["cat-nice.jpg"] :
-				["cat-mean.jpg"];
-		}
+    var risky = 0;
+    riskFactor = Math.floor(riskFactor);
+    if(riskFactor>5){
+      risky=1;
+    }
 
 		LITW.utils.showSlide("results");
 		$("#results").html(resultsTemplate({
 			content: C.results,
 			resultsExplanation: C.resultsExplanation,
 			citations: C.citations,
-			whichCat: whichCat,
-			bothCats: (whichCat.length === 2)
+      riskFactor: riskFactor,
+      risky: risky,
 		}));
 
 		LITW.results.insertFooter();
