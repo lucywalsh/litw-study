@@ -124,7 +124,7 @@ jsPsych.plugins['survey-multi-choice'] = (function() {
         $.extend(question_data, obje);
       });
 
-      var questions = {
+      var question_dict = {
         "Would you provide this website with the name of your bank?":"bank",
         "Would you provide your current location to this website?":"location",
         "Would you provide your full name to this website?":"fullname",
@@ -156,9 +156,11 @@ jsPsych.plugins['survey-multi-choice'] = (function() {
 
       var questionText = {};
       var question={};
+      var questions=[];
       $("div." + plugin_id_name + "-question .jspsych-survey-multi-choice-text.survey-multi-choice").each(function(index) {
         questionText = $(this).context.innerText;
-        question = questions[questionText];
+        question = question_dict[questionText];
+        questions.push(question);
       });
 
       var website = {};
@@ -170,7 +172,7 @@ jsPsych.plugins['survey-multi-choice'] = (function() {
       var trial_data = {
         "rt": response_time,
         "responses": JSON.stringify(question_data),
-        "question": JSON.stringify(question),
+        "questions": JSON.stringify(questions),
         "website": JSON.stringify(website)
       };
 
