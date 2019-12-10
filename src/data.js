@@ -51,6 +51,8 @@ var data_questions = [
   "options": ["Yes","No"]},
   {"prompt": "Would you provide information about your sexuality to this website?",
   "options": ["Yes","No"]},
+  {"prompt": "Would you provide information about your disability status to this website?",
+  "options": ["Yes","No"]},
   {"prompt": "Would you provide your photos to this website?",
   "options": ["Yes","No"]},
   {"prompt": "Would you provide your home address to this website?",
