@@ -180,9 +180,9 @@ module.exports = {
 	"practiceWebpages": [
 		{
       "type":"survey-multi-choice",
-      "image":"<img src='img/websites/twitter.png' style='width:80%;height:50%'/>",
+      "image":"<img class='website' id='twitter' src='img/websites/twitter.png' style='width:80%;height:50%;border:2px solid black'/>",
       "questions":[
-          {"prompt": "Would you provide this website with your financial information?",
+          {"prompt": "Would you provide this website with your bank account number?",
           "options": ["Yes","No"],
           "horizontal":true}
       ]
