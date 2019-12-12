@@ -141,9 +141,7 @@ module.exports = (function() {
         surveyData["wikipedia"] = $("input[name=wikipedia]:checked").val();
         surveyData["yahoo"] = $("input[name=yahoo]:checked").val();
         surveyData["youtube"] = $("input[name=youtube]:checked").val();
-        console.log(surveyData);
-
-        //LITW.data.submitStudyData(surveyData);
+        LITW.data.submitStudyData(surveyData);
       }
     });
 
@@ -235,7 +233,7 @@ module.exports = (function() {
 			});
 		});
 
-		// 5. MID-TRIAL BREAK
+		// MID-TRIAL BREAK
 		timeline.push({
 			type: "call-function",
 			func: function() {
@@ -251,7 +249,7 @@ module.exports = (function() {
 			name: "midTrialBreak",
 			display_element: $("#break")
 		});
-/*
+
     // Instructions part 2
 		timeline.push({
 			type: "display-slide",
@@ -446,7 +444,7 @@ module.exports = (function() {
 				func: submitData
 			});
 		});
-*/
+
 		// ******* END STUDY PROGRESSION ******** //
 	},
 
@@ -481,19 +479,35 @@ module.exports = (function() {
 		var studyData = jsPsych.data.getTrialsOfType("survey-likert");
     var studyData2 = jsPsych.data.getTrialsOfType("survey-multi-choice");
     console.log(studyData);
-    console.log(studyData2);
 
     var riskFactor = 0.0;
-    //trial 1
+
 		studyData.filter(function(item) {
-      var levelOfConcern = parseInt(item.responses[7]);
-      //naive risk factor calculation
-      if(levelOfConcern<3){
-        riskFactor=riskFactor+0.33;
+      if(item.scenario!="{}"){
+        var levelOfConcern = parseInt(item.responses[7]);
+        if(levelOfConcern<3){
+          riskFactor=riskFactor+0.33;
+        }
+      }
+      else{
+        var toolUse = parseInt(item.responses[9]);
+        switch(toolUse){
+          case 0:
+            riskFactor=riskFactor+0.33;
+            break
+          case 1:
+            riskFactor=riskFactor+0.66;
+            break
+          case 2:
+            riskFactor=riskFactor+0.33;
+            break
+          case 3:
+            riskFactor=riskFactor+0.66;
+            break
+        }
       }
 		});
 
-    //trial 2
     studyData2.filter(function(item){
       var website = item.website;
       var questions = item.questions.split(",");
