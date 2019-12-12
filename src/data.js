@@ -129,6 +129,14 @@ var scale_1 = [
   "Very concerning"
 ];
 
+var scale_2 = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E"
+]
+
 module.exports = {
 	"preTrial": {
 		"header": "Nice job!",
@@ -149,11 +157,17 @@ module.exports = {
     {
       "type": "survey-likert",
       "questions": [
-        {"prompt": "<img class='scenario' id='netflix' src='img/scenarios/scenario-1.png' style='width:80%;height:50%'/>", "labels": scale_1}
+        {"prompt": "<img class='scenario' id='netflix' src='img/scenarios/scenario-example.png' style='width:80%;height:50%'/>", "labels": scale_1}
       ]
     }
   ],
   "trialScenarios":[
+    {
+      "type": "survey-likert",
+      "questions": [
+        {"prompt": "<img class='scenario' id='netflix' src='img/scenarios/scenario-1.png' style='width:80%;height:50%'/>", "labels": scale_1}
+      ]
+    },
     {
       "type": "survey-likert",
       "questions": [
@@ -177,9 +191,16 @@ module.exports = {
 	"progressMsg": "Progress:",
 	"results": {
 		"header": "Based on your answers, your risk score is: ",
-		"riskyMsg": "Your data might be at risk while you browse. Be aware of the kinds of information sites collect from you - take a look at the privacy policies on websites, or download some of these tools to help protect your data:",
-		"notRiskyMsg": "Your data probably isn't at too much risk while you browse - great! It might still be worth taking a look at some of these tools to keep yourself as safe as possible: "
+		"riskyMsg": "Your data might be at risk while you browse. Be aware of the kinds of information sites collect from you - take a look at the privacy policies on websites, or download some of these browser extensions to help protect your data:",
+		"notRiskyMsg": "Your data probably isn't at too much risk while you browse - great! It might still be worth taking a look at some of these browser extensions  to keep yourself as safe as possible: "
 	},
+  "website_use":[
+    {
+    type: 'free-sort',
+    stimuli: sorting_stimuli,
+    prompt: "<p>Click and drag the images below and drop them in the right box depending on whether you have heard of/used that website before.</p>"
+    }
+  ],
   // trial 2 - webpages
 	"practiceWebpages": [
 		{
@@ -201,18 +222,18 @@ module.exports = {
   ],
   "practiceTools":[
     {
-      "type":"single-stim",
-      "stimulus":"VPN",
-      "prompt":"Do you use this tool? Press y or n on your keyboard",
-      "choices": ['y','n']
-		}
+      "type": "survey-likert",
+      "questions": [
+        {"prompt": "<img class='tool' id='browser' src='img/tools/browser.png' style='width:80%;height:50%'/>", "labels": scale_2}
+      ]
+    }
   ],
   "trialTools":[
     {
-      "type":"single-stim",
-      "stimulus":"Adblocker",
-      "prompt":"Do you use this tool? Press y or n on your keyboard",
-      "choices": ['y','n']
+      "type": "survey-likert",
+      "questions": [
+        {"prompt": "<img class='tool' id='adblocker' src='img/tools/adblocker.png' style='width:80%;height:50%'/>", "labels": scale_2}
+      ]
     }
   ],
 	"resultsExplanation": ["The tasks you completed in this study helped us to understand your attitude towards data privacy online.", "We are interested in learning more about this in order to build a product to help people protect their data online."],
