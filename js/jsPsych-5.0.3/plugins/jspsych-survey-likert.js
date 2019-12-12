@@ -74,12 +74,18 @@ jsPsych.plugins['survey-likert'] = (function() {
         console.log($(this).context.id);
         scenario = $(this).context.id;
       });
+      var tool = {};
+      $("#jspsych-survey-likert-form .jspsych-survey-likert-statement .tool").each(function(index){
+        console.log($(this).context.id);
+        tool = $(this).context.id;
+      });
 
       // save data
       var trial_data = {
         "rt": response_time,
         "responses": JSON.stringify(question_data),
-        "scenario": JSON.stringify(scenario)
+        "scenario": JSON.stringify(scenario),
+        "tool": JSON.stringify(tool)
       };
 
       display_element.html('');
