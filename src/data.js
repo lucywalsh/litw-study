@@ -99,15 +99,19 @@ var website_images = [
   "<img class='website' id='linkedin' src='img/websites/linkedin.png' style='width:80%;height:50%;border:2px solid black'/>",
   "<img class='website' id='met_office' src='img/websites/met_office.png' style='width:80%;height:60%;border:2px solid black'/>",
   "<img class='website' id='ny_times' src='img/websites/ny_times.png' style='width:80%;height:50%;border:2px solid black'/>",
-  "<img class='website' id='outlook' src='img/websites/outlook.jpeg' style='width:80%;height:50%;border:2px solid black'/>",
+  "<img class='website' id='outlook' src='img/websites/outlook.png' style='width:80%;height:50%;border:2px solid black'/>",
   "<img class='website' id='reddit' src='img/websites/reddit.png' style='width:80%;height:50%;border:2px solid black'/>",
   "<img class='website' id='tripadvisor' src='img/websites/tripadvisor.png' style='width:80%;height:50%;border:2px solid black'/>",
   "<img class='website' id='twitter' src='img/websites/twitter.png' style='width:80%;height:50%;border:2px solid black'/>",
   "<img class='website' id='usagov' src='img/websites/usagov.png' style='width:80%;height:50%;border:2px solid black'/>",
-  "<img class='website' id='whatsapp' src='img/websites/whatsapp.png' style='width:80%;height:20%;border:2px solid black'/>",
+  "<img class='website' id='whatsapp' src='img/websites/whatsapp.png' style='height:200px;border:2px solid black'/>",
   "<img class='website' id='wikipedia' src='img/websites/wikipedia.png' style='width:80%;height:50%;border:2px solid black'/>",
-  "<img class='website' id='yahoo' src='img/websites/yahoo.jpeg' style='width:80%;height:50%;border:2px solid black'/>",
+  "<img class='website' id='yahoo' src='img/websites/yahoo.jpg' style='width:80%;height:50%;border:2px solid black'/>",
   "<img class='website' id='youtube' src='img/websites/youtube.jpeg' style='width:80%;height:50%;border:2px solid black'/>",
+]
+
+var sorting_stimuli = [
+  "<img src='img/website-logos/bbc-logo.png' style='height:30px'/>"
 ]
 
 function rand_website_trial(){
