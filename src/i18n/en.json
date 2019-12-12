@@ -29,7 +29,7 @@
 
 
     "litw-instruct-header-2": "Instructions: Part 2",
-    "litw-instruct-body-1-p1-2": "You'll be shown screenshots of websites like this:",
+    "litw-instruct-body-1-p1-2": "You'll be shown screenshots of websites you've used in the past.",
     "litw-instruct-body-2-p1-2": "Your job is to select which types of data you'd be happy to provide to the website.",
     "litw-instruct-body-2-p2-2": "Let's give it a try!",
     "litw-instruct-body-2-p1-touch-2": "Your job is to decide which types of data you'd be happy to provide by tapping 'Yes' or 'No'.",
@@ -37,16 +37,16 @@
 
     "litw-instruct-header-3": "Instructions: Part 3",
     "litw-instruct-body-1-p1-3": "You'll be shown some different kinds of tools that people use to protect their privacy online. ",
-    "litw-instruct-body-2-p1-3": "Type 'y' on your keyboard if you use that tool, or 'n' if not.",
+    "litw-instruct-body-2-p1-3": "Select the right option A-E based on whether you've used that tool or would be wiling to in the future.",
     "litw-instruct-body-2-p2-3": "Let's give it a try!",
-    "litw-instruct-body-2-p1-touch-3": "Tap 'y' if you use that tool, or 'n' if not.",
+    "litw-instruct-body-2-p1-touch-3": "Select the right option A-E based on whether you've used that tool or would be wiling to in the future.",
     "litw-instruct-body-2-p2-touch-3": "Let's give it a try!",
 
     "litw-instruct-header": "Instructions: Part 1",
-    "litw-instruct-body-1-p1": "You'll be shown a scenario of something you might come across when browsing online, like this one:",
-    "litw-instruct-body-2-p1": "For each scenario, use the slider to rate how concerning you find it.",
+    "litw-instruct-body-1-p1": "You'll be shown a scenario of something you might come across when browsing online.",
+    "litw-instruct-body-2-p1": "For each scenario, rate how concerning you find it.",
     "litw-instruct-body-2-p2": "Let's give it a try!",
-    "litw-instruct-body-2-p1-touch": "For each scenario, use the slider to rate how concerning you find it.",
+    "litw-instruct-body-2-p1-touch": "For each scenario, rate how concerning you find it.",
     "litw-instruct-body-2-p2-touch": "Let's give it a try!",
 
     "website-use-header":"How often do you use these websites?",
