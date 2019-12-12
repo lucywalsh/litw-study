@@ -1,10 +1,10 @@
 /*************************************************************
  * litw-styles.css
- * 
+ *
  * Base stylesheet for LabintheWild.
- * 
+ *
  * Author: Yuechen Zhao, Trevor Croxson
- * 
+ *
  * Last Modified: January 7, 2017
  *
  * © Copyright 2017 LabintheWild
@@ -14,7 +14,7 @@
 
 /********************************************
  * CSS RESET
- * http://meyerweb.com/eric/tools/css/reset/ 
+ * http://meyerweb.com/eric/tools/css/reset/
  * v2.0 | 20110126
  * License: none (public domain)
  *******************************************/
@@ -27,8 +27,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -38,7 +38,7 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }*/
 /* HTML5 display-role reset for older browsers */
-/*article, aside, details, figcaption, figure, 
+/*article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
@@ -65,6 +65,14 @@ table {
  * PAGE STRUCTURE
  *******************************************/
 
+.tools{
+	text-align:center;
+	align:center;
+	justify-content: center;
+	table-layout:fixed;
+	width:100%;
+}
+
 /* styles for the entire page */
 body {
 	margin: 0;
@@ -74,18 +82,18 @@ body {
 	line-height: 22px;
 	color: #222;
 }
-#wrapper, #content { 
-	width: 800px; 
-	margin: 0 auto; 
+#wrapper, #content {
+	width: 800px;
+	margin: 0 auto;
 }
-#header { 
-	margin-top: 30px; 
+#header {
+	margin-top: 30px;
 }
-#share-text { 
-	float:right; 
-	margin-top:15px; 
-	font-size: 13px; 
-	color:#888; 
+#share-text {
+	float:right;
+	margin-top:15px;
+	font-size: 13px;
+	color:#888;
 }
 .irb-paragraph {
 	margin-top: 20px;
@@ -104,8 +112,8 @@ body {
 #irb h2 {
 	margin-bottom: 30px;
 }
-.slide { 
-	display: none; 
+.slide {
+	display: none;
 }
 #likert-scale {
 	display: block;
@@ -113,12 +121,12 @@ body {
 	width: 710px;
 	border: 0px;
 }
-#likert-scale input { 
-	margin-left: 15px; 
-	margin-right: 15px; 
+#likert-scale input {
+	margin-left: 15px;
+	margin-right: 15px;
 }
-#comments { 
-	text-align: center; 
+#comments {
+	text-align: center;
 }
 textarea.comments-box, textarea.comments_box {
 	padding: 15px;
@@ -246,7 +254,7 @@ textarea.comments-box, textarea.comments_box {
 	user-select: none;
 	cursor: pointer;
 }
-.btn-next-page:active, #btn-next-page:active { 
+.btn-next-page:active, #btn-next-page:active {
 	background: url("../img/btn-next-active.png");
 }
 
@@ -255,10 +263,10 @@ textarea.comments-box, textarea.comments_box {
  * IMAGES
  *******************************************/
 
-#logo { 
-	float: left; 
-	margin-top: 30px; 
-	margin-bottom: 15px; 
+#logo {
+	float: left;
+	margin-top: 30px;
+	margin-bottom: 15px;
 }
 .img-logo {
 	height: 75px;
@@ -309,7 +317,7 @@ select {
 	margin-bottom: 15px;
 	border: 1pt solid transparent;
 	border-radius: 7px;
-	padding: 3px;	
+	padding: 3px;
 }
 .expansion-element {
 	margin-left: 20px;
@@ -480,12 +488,12 @@ select {
  * LINKS
  *******************************************/
 
-a:link, a:visited, a:hover { 
-	text-decoration: none; 
-	color: #0099cc; 
+a:link, a:visited, a:hover {
+	text-decoration: none;
+	color: #0099cc;
 }
-a:active { 
-	color: #003b4e; 
+a:active {
+	color: #003b4e;
 }
 
 
@@ -509,13 +517,13 @@ a:active {
 	margin-top: -50px;
   margin-left: -50px;
 }
-.warn { 
-	color: #f00; 
-	font-weight: bold; 
+.warn {
+	color: #f00;
+	font-weight: bold;
 }
-.bolded-blue { 
-	font-weight: bold; 
-	color: #3f6379; 
+.bolded-blue {
+	font-weight: bold;
+	color: #3f6379;
 }
 .hidden {
 	display: none;
@@ -532,4 +540,3 @@ a:active {
 #num-loaded {
 	text-align: center;
 }
-
