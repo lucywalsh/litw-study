@@ -5,10 +5,11 @@ require_once("config.php");
 $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 mysqli_set_charset($conn, "utf8");
 
-if ( false===$conn ) {
+if ( !$conn ) {
     print "Failed to connect to Database: " . mysqli_error();
     die('connect() failed: ');
 }
+echo "Connected successfully";
 
 
 $key = '$.'.$_GET['key'];

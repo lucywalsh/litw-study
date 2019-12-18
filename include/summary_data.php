@@ -14,7 +14,7 @@ function summary($json_data) {
 //READ db_data.json
 $json_data = file_get_contents("db_data.json");
 //PROCESS DATA
-$json_summary = summary($json_data);
+$json_summary = $json_data;
 //SAVE summary.json
 $f_summary = fopen('summary.json', 'w');
 fwrite($f_summary, $json_summary);

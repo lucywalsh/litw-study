@@ -1,5 +1,5 @@
 <?php
-
+/*
 function update_summary($json_key) {
 	$_GET['key']=$json_key;
 	include 'get_data.php';
@@ -19,3 +19,4 @@ if (file_exists($filename)) {
 	update_summary(LITW_SUMMARY_JSONKEY);
 }
 ?>
+*/
