@@ -185,6 +185,9 @@ module.exports = (function() {
 		  }
     );
 
+		//var trial_data_1 = {"stimulus_1": trial.stimulus, "answer_1": trial.response};
+		//LITW.data.submitStudyData(trial_data_1);
+
 		// 3. PRE-TRIAL BREAK
 		timeline.push({
 			type: "call-function",

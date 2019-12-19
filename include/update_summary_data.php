@@ -1,5 +1,5 @@
 <?php
-/*
+
 function update_summary($json_key) {
 	$_GET['key']=$json_key;
 	include 'get_data.php';
@@ -7,6 +7,7 @@ function update_summary($json_key) {
 }
 
 require_once("config.php");
+
 $filename = 'summary.json';
 
 if (file_exists($filename)) {
@@ -18,5 +19,5 @@ if (file_exists($filename)) {
 } else {
 	update_summary(LITW_SUMMARY_JSONKEY);
 }
+
 ?>
-*/
