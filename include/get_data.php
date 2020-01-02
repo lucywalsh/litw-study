@@ -47,13 +47,13 @@ $stmt->close();
 $dir = "data";
 if(!file_exists($dir)){
   mkdir($dir, 0744);
-  print_r(error_get_last());
+  //print_r(error_get_last());
 }
 
 $f_data = file_put_contents($dir.'/db_data.json', $result);
 if(false===$f_data){
-  echo "can't open file";
-  print_r(error_get_last());
+  //echo "can't open file";
+  //print_r(error_get_last());
 }
 
 ?>
