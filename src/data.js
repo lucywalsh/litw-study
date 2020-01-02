@@ -111,28 +111,25 @@ var website_images = [
 ]
 
 var scenario_images = [
-  "<img class='scenario' id='allrecipes' src='img/scenarios/allrecipes.png' style='width:90%;height:50%;border:2px solid black'/>",
-  "<img class='scenario' id='accuweather-facebook' src='img/scenarios/accuweather-facebook.png' style='width:90%;height:50%;border:2px solid black'/>",
-  "<img class='scenario' id='amazon-1' src='img/scenarios/amazon-1.png' style='width:80%;height:50%;border:2px solid black'/>",
-  "<img class='scenario' id='amazon-2' src='img/scenarios/amazon-2.png' style='width:80%;height:50%;border:2px solid black'/>",
-  "<img class='scenario' id='amazon-3' src='img/scenarios/amazon-3.png' style='width:80%;height:50%;border:2px solid black'/>",
-  "<img class='scenario' id='apple-1' src='img/scenarios/apple.png' style='width:80%;height:50%;border:2px solid black'/>",
-  "<img class='scenario' id='apple-2' src='img/scenarios/apple-2.png' style='width:80%;height:50%;border:2px solid black'/>",
-  "<img class='scenario' id='bbc-1' src='img/scenarios/bbc-1.png' style='width:80%;height:50%;border:2px solid black'/>",
-  "<img class='scenario' id='bbc-2' src='img/scenarios/bbc-2.png' style='width:80%;height:50%;border:2px solid black'/>",
-  "<img class='scenario' id='dictionary-1' src='img/scenarios/dictionary-1.png' style='width:80%;height:50%;border:2px solid black'/>",
-  "<img class='scenario' id='dictionary-2' src='img/scenarios/dictionary-2.png' style='width:80%;height:50%;border:2px solid black'/>",
-  "<img class='scenario' id='ebay-1' src='img/scenarios/ebay-1.png' style='width:80%;height:50%;border:2px solid black'/>",
-  "<img class='scenario' id='ebay-2' src='img/scenarios/ebay-2.png' style='width:80%;height:50%;border:2px solid black'/>",
-  "<img class='scenario' id='expedia-facebook' src='img/scenarios/expedia-facebook.png' style='width:80%;height:50%;border:2px solid black'/>",
-  "<img class='scenario' id='facebook-1' src='img/scenarios/facebook-1.png' style='width:80%;height:50%;border:2px solid black'/>",
-  "<img class='scenario' id='facebook-2' src='img/scenarios/facebook-2.png' style='width:80%;height:50%;border:2px solid black'/>",
-  "<img class='scenario' id='facebook-3' src='img/scenarios/facebook-3.png' style='width:80%;height:50%;border:2px solid black'/>",
-  "<img class='scenario' id='gmail-personal' src='img/scenarios/gmail-personal.png' style='width:80%;height:50%;border:2px solid black'/>",
-  "<img class='scenario' id='gmail-work' src='img/scenarios/gmail-work.png' style='width:80%;height:50%;border:2px solid black'/>",
-  "<img class='scenario' id='google' src='img/scenarios/google.png' style='width:80%;height:50%;border:2px solid black'/>",
-  "<img class='scenario' id='instagram' src='img/scenarios/instagram.png' style='width:80%;height:50%;border:2px solid black'/>",
-  "<img class='scenario' id='netflix' src='img/scenarios/netflix.png' style='width:80%;height:50%;border:2px solid black'/>",
+  "<img class='scenario' id='allrecipes' src='img/scenarios/allrecipes.png' style='width:90%;height:50%'/>",
+  "<img class='scenario' id='accuweather-facebook' src='img/scenarios/accuweather-facebook.png' style='width:90%;height:50%'/>",
+  "<img class='scenario' id='amazon-1' src='img/scenarios/amazon-1.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='amazon-2' src='img/scenarios/amazon-2.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='amazon-3' src='img/scenarios/amazon-3.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='apple-1' src='img/scenarios/apple.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='apple-2' src='img/scenarios/apple-2.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='bbc-1' src='img/scenarios/bbc-1.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='bbc-2' src='img/scenarios/bbc-2.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='dictionary-1' src='img/scenarios/dictionary-1.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='dictionary-2' src='img/scenarios/dictionary-2.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='ebay-1' src='img/scenarios/ebay-1.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='ebay-2' src='img/scenarios/ebay-2.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='expedia-facebook' src='img/scenarios/expedia-facebook.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='facebook-1' src='img/scenarios/facebook-1.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='facebook-2' src='img/scenarios/facebook-2.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='facebook-3' src='img/scenarios/facebook-3.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='instagram' src='img/scenarios/instagram.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='netflix' src='img/scenarios/netflix.png' style='width:80%;height:50%/>",
 ]
 
 var sorting_stimuli = [
@@ -148,7 +145,7 @@ function rand_website_trial(){
 
 function rand_scenario_trial(){
   rand_index = Math.floor(Math.random()*scenario_images.length);
-  rand_scenario_image = website_images[rand_index];
+  rand_scenario_image = scenario_images[rand_index];
   scenario_images.splice(rand_index,1);
   return {"type": "survey-likert","questions": [ {"prompt": rand_scenario_image, "labels": scale_1}]};
 }
