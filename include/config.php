@@ -37,7 +37,7 @@ $sql = "CREATE TABLE `study_data` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1";
 
-$sql = "SELECT timestamp FROM study_data";
+$sql = "SELECT data FROM study_data";
 if($result = mysqli_query($conn, $sql)){
   echo "query successful";
   while ($row = mysqli_fetch_row($result)) {
@@ -55,6 +55,5 @@ else{
 /* How many seconds old should SUMMARY.JSON be to trigger an update */
 /* ALERT: Avoid making this too low to avoid too many DB operations */
 define('LITW_SUMMARY_DEADLINE', 0); //86400 every day; 3600 every hour
-/* What JSON key should be searched to retrieve DB data to produce the summary*/
-define('LITW_SUMMARY_JSONKEY', 'country0');
+
 ?>

@@ -550,9 +550,12 @@ module.exports = (function() {
       risky: risky,
 		}));
 
+		//TODO: store risk factor in database
+
 		LITW.results.insertFooter();
 	};
 
+//not sure if this function is necessary
 	summaryInitialData = function(json_data){
 		var summary = {};
 		for (count in json_data) {
@@ -570,8 +573,6 @@ module.exports = (function() {
 
 	readSummaryData = function() {
 		$.getJSON( "summary.json", function( data ) {
-			//TODO: 'data' contains the produced summary form DB data
-			//      in case the study was loaded using 'index.php'
 			//SAMPLE: The example code gets the cities of study partcipants.
 			console.log(data);
 		});
@@ -579,7 +580,7 @@ module.exports = (function() {
 
 	// when the page is loaded, start the study!
 	$(document).ready(function() {
-		// get initial data from database (nmaybe needed for the results page!?)
+		// get initial data from database for the results page
 		readSummaryData();
 
 		// detect touch devices
@@ -601,8 +602,7 @@ module.exports = (function() {
 		// shortcut to access study content
 		C = LITW_STUDY_CONTENT;
 
-		// Load the trial configuration data for the practice
-		// trials and the real trials
+		// Load the trial configuration data for the practice trials and the real trials
 		params.practiceStims1 = C.practiceScenarios;
 		params.stims1 = C.trialScenarios;
     params.practiceStims2 = C.practiceWebpages;
@@ -610,7 +610,7 @@ module.exports = (function() {
     params.practiceStims3 = C.practiceTools;
     params.stims3 = C.trialTools;
 
-		// shuffle the order of the trials
+		// shuffle the order of the questions in trial 1
 		params.practiceStims1 = LITW.utils.shuffleArrays(params.practiceStims1);
 		params.stims1 = LITW.utils.shuffleArrays(params.stims1);
 

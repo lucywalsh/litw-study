@@ -10,50 +10,47 @@ if ( !$conn ) {
     die('connect() failed: ');
 }
 //echo "Connected successfully";
+$stmt = $conn->prepare("SELECT data FROM study_data");
 
-$key = '$.'.$_GET['key'];
-if(isset($_GET['date'])) {
-    $date = $_GET['date'];
-	$stmt = $conn->prepare("SELECT data FROM study_data WHERE timestamp > ?");
-	$rc = $stmt->bind_param('ss', $date);
-} else {
-	$stmt = $conn->prepare("SELECT data FROM study_data");
-}
-
-if ( false===$rc ) {
+/*
+if ( false===$stmt ) {
     echo "Failed: " . mysqli_error($conn);
-    die('bind_param() failed: ' . htmlspecialchars($stmt->error));
 }
-
+*/
 $rc = $stmt->execute();
+
+/*
 if ( false===$rc ) {
     echo "Failed: " . mysqli_error($conn);
     die('execute() failed: ' . htmlspecialchars($stmt->error));
 }
-
+*/
 $stmt->store_result();
+
 $stmt->bind_result($json_line);
 
 $result = array();
 while ($stmt->fetch()) {
     array_push($result, $json_line);
 }
-
 $stmt->close();
 
-//$encoded = json_encode($result);
-//header('Content-type: application/json');
-//exit($encoded);
-$dir = "data";
-if(!file_exists($dir)){
-  mkdir($dir, 0744);
-  //print_r(error_get_last());
-}
-
-$f_data = file_put_contents($dir.'/db_data.json', $result);
+$f_data = fopen('db_data.json', 'w');
+/*
 if(false===$f_data){
-  //echo "can't open file";
-  //print_r(error_get_last());
+  echo "can't open file";
+  print_r(error_get_last());
 }
+*/
+fwrite($f_data,'[');
+$i = 0;
+$arrayLength=count($result)-1;
+while($i<$arrayLength){
+  fwrite($f_data, $result[$i].',');
+  $i++;
+}
+fwrite($f_data,$result[$arrayLength]);
+fwrite($f_data,']');
+fclose($f_data);
 
 ?>
