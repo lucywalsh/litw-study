@@ -481,7 +481,7 @@ module.exports = (function() {
 		// get the trial data from jsPsych
 		var studyData = jsPsych.data.getTrialsOfType("survey-likert");
     var studyData2 = jsPsych.data.getTrialsOfType("survey-multi-choice");
-    console.log(studyData);
+    console.log(studyData2);
 
     var riskFactor = 0.0;
 
@@ -529,17 +529,49 @@ module.exports = (function() {
         questions[i] = questions[i].replace("]","");
         questions[i] = questions[i].replace(/['"]+/g, '');
         //naive risk factor calculation
-        if(responses[i].includes("Yes")){
+        if(responses[i].includes("No")){
           riskFactor=riskFactor+0.33;
+        }
+				if(responses[i].includes("Maybe")){
+          riskFactor=riskFactor+0.15;
+        }
+				if(responses[i].includes("I don't use this tool currently but <strong>I would be</strong> willing to use it")){
+          riskFactor=riskFactor+0.33;
+        }
+				if(responses[i].includes("I don't use this tool currently and <strong>I would not</strong> be willing to use it")){
+          riskFactor=riskFactor+0.33;
+        }
+				if(responses[i].includes("I have used this tool in the past and <strong>would</strong> be willing to use it again")){
+          riskFactor=riskFactor+0.15;
+        }
+				if(responses[i].includes("I have used this tool in the past but <strong>would not</strong> use it again")){
+          riskFactor=riskFactor+0.66;
         }
       }
     });
 
-    var risky = 0;
+    var riskLevel = "";
     riskFactor = Math.floor(riskFactor);
-    if(riskFactor>5){
-      risky=1;
+    if(riskFactor<4){
+      riskLevel = "low risk";
     }
+		else if(riskFactor<8){
+			riskLevel = "medium risk";
+		}
+		else{
+			riskLevel = "high risk";
+		}
+
+		var submitRiskFactor = {"riskFactor":riskFactor};
+		LITW.data.submitData(submitRiskFactor);
+
+		var avgRiskFactor = 0;
+		var request = new XMLHttpRequest();
+		request.open("GET", "summary.json", false);
+		request.send(null)
+		var data = JSON.parse(request.responseText);
+		avgRiskFactor = data['avgRiskFactor'];
+		console.log(avgRiskFactor);
 
 		LITW.utils.showSlide("results");
 		$("#results").html(resultsTemplate({
@@ -547,10 +579,9 @@ module.exports = (function() {
 			resultsExplanation: C.resultsExplanation,
 			citations: C.citations,
       riskFactor: riskFactor,
-      risky: risky,
+      riskLevel: riskLevel,
+			averageRisk: avgRiskFactor
 		}));
-
-		//TODO: store risk factor in database
 
 		LITW.results.insertFooter();
 	};
@@ -571,17 +602,8 @@ module.exports = (function() {
 		LITW.data.submitStudyData(data);
 	}
 
-	readSummaryData = function() {
-		$.getJSON( "summary.json", function( data ) {
-			//SAMPLE: The example code gets the cities of study partcipants.
-			console.log(data);
-		});
-	}
-
 	// when the page is loaded, start the study!
 	$(document).ready(function() {
-		// get initial data from database for the results page
-		readSummaryData();
 
 		// detect touch devices
 		window.litwWithTouch = ("ontouchstart" in window);
@@ -593,6 +615,7 @@ module.exports = (function() {
 				$('head').i18n();
 				$('body').i18n();
 			}
+
 		);
 
 		// generate unique participant id and geolocate participant
@@ -610,9 +633,9 @@ module.exports = (function() {
     params.practiceStims3 = C.practiceTools;
     params.stims3 = C.trialTools;
 
-		// shuffle the order of the questions in trial 1
-		params.practiceStims1 = LITW.utils.shuffleArrays(params.practiceStims1);
-		params.stims1 = LITW.utils.shuffleArrays(params.stims1);
+		// shuffle the order of the questions in trial 3
+		params.practiceStims1 = LITW.utils.shuffleArrays(params.practiceStims3);
+		params.stims1 = LITW.utils.shuffleArrays(params.stims3);
 
 		LITW.utils.showSlide("img-loading");
 

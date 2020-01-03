@@ -1,17 +1,19 @@
 <?php
-
 function summary($json_data) {
 	$data = json_decode($json_data,true);
-	$countries = array();
+	$riskFactors = array();
+	$riskFactorSum = 0;
 	foreach ($data as $arr) {
 		foreach($arr as $key => $value){
 			// change this to get data about other participants for use in the results page
-			if($key == 'country0'){
-				$countries[$value] = true;
+			if($key == 'riskFactor'){
+				array_push($riskFactors,$value);
+				$riskFactorSum=$riskFactorSum+$value;
 			}
 		}
 	}
-	$summary = array('country_number'=>sizeof($countries),'countries'=>array_keys($countries));
+	$averageRiskFactor = $riskFactorSum / sizeof($riskFactors);
+	$summary = array('num_of_participants'=>sizeof($riskFactors),'avgRiskFactor'=>$averageRiskFactor);
 	return json_encode($summary);
 }
 

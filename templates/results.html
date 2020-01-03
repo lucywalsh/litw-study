@@ -1,6 +1,10 @@
 
 <!-- Template for the results page -->
-<h2 class="bolded-blue">{{content.header}}{{riskFactor}}/10</h2>
+<h2 class="bolded-blue">{{content.header}}{{riskFactor}}/10.</h2>
+<h2>Your data is at {{riskLevel}}.</h2>
+
+<h3>The average score of participants of this survey is <span style="font-weight:bold">{{averageRisk}}/10</span></h3>
+
 
 {{#if risky}}
 	<p>{{content.riskyMsg}}</p>

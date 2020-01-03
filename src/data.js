@@ -13,60 +13,58 @@
  *************************************************************/
 
 var data_questions = [
-  {"prompt": "Would you provide this website with the name of your bank?",
-  "options": ["Yes","No"]},
-  {"prompt": "Would you provide your current location to this website?",
-  "options": ["Yes","No"]},
-  {"prompt": "Would you provide your full name to this website?",
-  "options": ["Yes","No"]},
-  {"prompt": "Would you provide your fingerprint to this website?",
-  "options": ["Yes","No"]},
-  {"prompt": "Would you provide a scan of your face to this website?",
-  "options": ["Yes","No"]},
-  {"prompt": "Would you provide your passport number to this website?",
-  "options": ["Yes","No"]},
-  {"prompt": "Would you provide the content of your emails to this website?",
-  "options": ["Yes","No"]},
-  {"prompt": "Would you provide the content of your personal messages to this website?",
-  "options": ["Yes","No"]},
-  {"prompt": "Would you provide your browsing history on other websites to this website?",
-  "options": ["Yes","No"]},
-  {"prompt": "Would you provide the kind of device you're using to this site?",
-  "options": ["Yes","No"]},
-  {"prompt": "Would you provide the the operating system you're using to this website?",
-  "options": ["Yes","No"]},
-  {"prompt": "Would you provide a unique ID of your device to this website?",
-  "options": ["Yes","No"]},
-  {"prompt": "Would you provide your contact list to this website?",
-  "options": ["Yes","No"]},
-  {"prompt": "Would you provide your place of employment to this website?",
-  "options": ["Yes","No"]},
-  {"prompt": "Would you provide your racial/ethnic origin to this website?",
-  "options": ["Yes","No"]},
-  {"prompt": "Would you provide information your hobbies or interests to this website?",
-  "options": ["Yes","No"]},
-  {"prompt": "Would you provide information about who you're going to vote for to this website?",
-  "options": ["Yes","No"]},
-  {"prompt": "Would you provide information about whether you are left or right leaning politically to this website?",
-  "options": ["Yes","No"]},
-  {"prompt": "Would you provide information about your sexuality to this website?",
-  "options": ["Yes","No"]},
-  {"prompt": "Would you provide information about your disability status to this website?",
-  "options": ["Yes","No"]},
-  {"prompt": "Would you provide your photos to this website?",
-  "options": ["Yes","No"]},
-  {"prompt": "Would you provide your home address to this website?",
-  "options": ["Yes","No"]},
-  {"prompt": "Would you provide information about the products you like to this website?",
-  "options": ["Yes","No"]},
-  {"prompt": "Would you provide your dietary requirements to this website?",
-  "options": ["Yes","No"]},
-  {"prompt": "Would you provide your religious beliefs to this website?",
-  "options": ["Yes","No"]},
-  {"prompt": "Would you provide your credit card number to this website?",
-  "options": ["Yes","No"]},
-  {"prompt": "Would you provide this website with your bank account number?",
-  "options": ["Yes","No"]}
+  {"prompt": "Would you mind if this website knew the name of your bank?",
+  "options": ["Yes","Maybe","No"]},
+  {"prompt": "Would you mind if this website knew your current location?",
+  "options": ["Yes","Maybe","No"]},
+  {"prompt": "Would you mind if this website knew your full name?",
+  "options": ["Yes","Maybe","No"]},
+  {"prompt": "Would you use your fingerprint to login to or access this website?",
+  "options": ["Yes","Maybe","No"]},
+  {"prompt": "Would you use a scan of your face to login to or access this website?",
+  "options": ["Yes","Maybe","No"]},
+  {"prompt": "Would you mind if this website knew your passport number?",
+  "options": ["Yes","Maybe","No"]},
+  {"prompt": "Would you mind if this website could access the contents of your emails?",
+  "options": ["Yes","Maybe","No"]},
+  {"prompt": "Would you mind if this website could access the contents of your personal messages?",
+  "options": ["Yes","Maybe","No"]},
+  {"prompt": "Would you mind if this website collected information about your browsing history on other websites?",
+  "options": ["Yes","Maybe","No"]},
+  {"prompt": "Would you mind if this website knew which kind of device you were using? e.g. if you are using a mobile phone or laptop",
+  "options": ["Yes","Maybe","No"]},
+  {"prompt": "Would you mind if this website was uniquely able to identify your device without you logging in?",
+  "options": ["Yes","Maybe","No"]},
+  {"prompt": "Would you mind if this website could access your contact list?",
+  "options": ["Yes","Maybe","No"]},
+  {"prompt": "Would you mind if this website knew where you worked?",
+  "options": ["Yes","Maybe","No"]},
+  {"prompt": "Would you mind if this website knew your racial/ethnic origin?",
+  "options": ["Yes","Maybe","No"]},
+  {"prompt": "Would you mind if this website knew about your hobbies or interests?",
+  "options": ["Yes","Maybe","No"]},
+  {"prompt": "Would you mind if this website knew who you wanted to vote for?",
+  "options": ["Yes","Maybe","No"]},
+  {"prompt": "Would you mind if this website knew if left or right leaning politically?",
+  "options": ["Yes","Maybe","No"]},
+  {"prompt": "Would you mind if this website knew your sexuality? i.e. whether you are heterosexual, homosexual, pansexual etc.",
+  "options": ["Yes","Maybe","No"]},
+  {"prompt": "Would mind if this website knew if you were disabled or not?",
+  "options": ["Yes","Maybe","No"]},
+  {"prompt": "Would mind if this website had access to your photos?",
+  "options": ["Yes","Maybe","No"]},
+  {"prompt": "Would you mind if this website knew your home address?",
+  "options": ["Yes","Maybe","No"]},
+  {"prompt": "Would you mind if this website knew what kind of products you liked?",
+  "options": ["Yes","Maybe","No"]},
+  {"prompt": "Would you mind if this website knew if you had allergies/dietary requirements?",
+  "options": ["Yes","Maybe","No"]},
+  {"prompt": "Would you mind if this website knew your religious beliefs?",
+  "options": ["Yes","Maybe","No"]},
+  {"prompt": "Would you mind if this website knew your credit card number?",
+  "options": ["Yes","Maybe","No"]},
+  {"prompt": "Would you mind if this website knew your bank account number?",
+  "options": ["Yes","Maybe","No"]}
 ]
 
 function rand_questions(questions, num_qs){
@@ -116,7 +114,7 @@ var scenario_images = [
   "<img class='scenario' id='amazon-1' src='img/scenarios/amazon-1.png' style='width:80%;height:50%'/>",
   "<img class='scenario' id='amazon-2' src='img/scenarios/amazon-2.png' style='width:80%;height:50%'/>",
   "<img class='scenario' id='amazon-3' src='img/scenarios/amazon-3.png' style='width:80%;height:50%'/>",
-  "<img class='scenario' id='apple-1' src='img/scenarios/apple.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='apple-1' src='img/scenarios/apple-1.png' style='width:80%;height:50%'/>",
   "<img class='scenario' id='apple-2' src='img/scenarios/apple-2.png' style='width:80%;height:50%'/>",
   "<img class='scenario' id='bbc-1' src='img/scenarios/bbc-1.png' style='width:80%;height:50%'/>",
   "<img class='scenario' id='bbc-2' src='img/scenarios/bbc-2.png' style='width:80%;height:50%'/>",
@@ -166,6 +164,19 @@ var scale_2 = [
   "E"
 ]
 
+var tools_question = [{"prompt": "Have you used this tool?",
+"options": [
+  "I don't use this tool currently but <strong>I would be</strong> willing to use it",
+  "I don't use this tool currently and <strong>I would not</strong> be willing to use it",
+  "I have used this tool in the past and <strong>would</strong> be willing to use it again",
+  "I have used this tool in the past but <strong>would not</strong> use it again",
+  "I use this tool <strong>currently</strong>"
+]}];
+
+
+
+
+
 module.exports = {
 	"preTrial": {
 		"header": "Nice job!",
@@ -186,7 +197,7 @@ module.exports = {
     {
       "type": "survey-likert",
       "questions": [
-        {"prompt": "<img class='scenario' id='netflix' src='img/scenarios/scenario-example.png' style='width:80%;height:50%'/>", "labels": scale_1}
+        {"prompt": "<img class='scenario' id='scenario-example' src='img/scenarios/scenario-example.png' style='width:80%;height:50%'/>", "labels": scale_1}
       ]
     }
   ],
@@ -200,7 +211,7 @@ module.exports = {
 	"loadingMsg": "Loading resources:",
 	"progressMsg": "Progress:",
 	"results": {
-		"header": "Based on your answers, your risk score is: ",
+		"header": "Based on your answers, your score is: ",
 		"riskyMsg": "Your data might be at risk while you browse. Be aware of the kinds of information sites collect from you - take a look at the privacy policies on websites, or download some of these browser extensions to help protect your data:",
 		"notRiskyMsg": "Your data probably isn't at too much risk while you browse - great! It might still be worth taking a look at some of these browser extensions  to keep yourself as safe as possible: "
 	},
@@ -217,8 +228,8 @@ module.exports = {
       "type":"survey-multi-choice",
       "image":"<img class='website' id='twitter' src='img/websites/twitter.png' style='width:80%;height:50%;border:2px solid black'/>",
       "questions":[
-          {"prompt": "Would you provide this website with your bank account number?",
-          "options": ["Yes","No"],
+          {"prompt": "Would mind if this website knew your bank account number?",
+          "options": ["Yes","Maybe","No"],
           "horizontal":true}
       ]
 		}
@@ -231,20 +242,10 @@ module.exports = {
     rand_website_trial(),
   ],
   "practiceTools":[
-    {
-      "type": "survey-likert",
-      "questions": [
-        {"prompt": "<img class='tool' id='browser' src='img/tools/browser.png' style='width:80%;height:50%'/>", "labels": scale_2}
-      ]
-    }
+    {"type":"survey-multi-choice","image":"<img class='tool' id='browser' src='img/tools/browser.png' style='width:80%;height:50%'/>","questions":tools_question,"randomize_question_order":false}
   ],
   "trialTools":[
-    {
-      "type": "survey-likert",
-      "questions": [
-        {"prompt": "<img class='tool' id='adblocker' src='img/tools/adblocker.png' style='width:80%;height:50%'/>", "labels": scale_2}
-      ]
-    }
+    {"type":"survey-multi-choice","image":"<img class='tool' id='adblocker' src='img/tools/adblocker.png' style='width:80%;height:50%'/>","questions":tools_question,"randomize_question_order":false}
   ],
 	"resultsExplanation": ["The tasks you completed in this study helped us to understand your attitude towards data privacy online.", "We are interested in learning more about this in order to build a product to help people protect their data online."],
 };
