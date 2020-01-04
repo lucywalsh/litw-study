@@ -7,16 +7,16 @@
         "message-documentation": "qqq"
     },
 
-    "litw-template-title": "Data Privacy",
+    "litw-template-title": "Data Privacy Survey",
     "litw-irb-header": "Is your online data at risk?",
     "litw-irb-subheader-1": "This study will ask you about your online habits to determine whether your data is at risk.",
     "litw-irb-subheader-2": "Please read the following information carefully before proceeding.",
     "litw-irb-body-1-p1": "Why we are doing this research?",
-    "litw-irb-body-1-p2": "This research aims to allow us to better understand the main concerns of users around their data security online, their current knowledge of the risks involved and any measures they take to mitigate these risks. This knowledge will inform the design and development of a product that aims to help users take control of how their data is used online. ",
+    "litw-irb-body-1-p2": "This research aims to allow us to better understand the main concerns of users around their data security online and any measures they take to mitigate risks. This knowledge will inform the design and development of a product that aims to help users take control of how their data is used online. ",
     "litw-irb-body-2-p1": "What you will have to do?",
-    "litw-irb-body-2-p2": "You will be presented with a series of questions and scenarios about how your data is used online, including the risks involved and ways to mitigate them.",
+    "litw-irb-body-2-p2": "You will be presented with a series of questions and scenarios about how your data is used online, including how to protect it.",
     "litw-irb-body-3-p1": "What you will get out of it?",
-    "litw-irb-body-3-p2": "We hope that after taking this test you’ll have a better idea of many of the different ways personal data is collected as you browse and how it is used by the sites you visit.  We'll also show you how your knowledge level compares to other people.",
+    "litw-irb-body-3-p2": "We hope that after taking this test you’ll have a better idea of many of the different ways personal data is collected as you browse and how it is used by the sites you visit, and how you can protect your data privacy online.  We'll also tell you how at risk your data is while you browse based on your habits, show you how this compares to other people who took this survey, and suggest ways you can protect your data.",
     "litw-irb-body-4-p1": "Privacy and Data Collection:",
     "litw-irb-body-4-p2": "We will not ask you for any personally identifiable information, and your responses will be kept anonymous. Any data that we collect will be securely stored on our servers.",
     "litw-irb-body-5-p1": "Expected Duration:",
@@ -29,17 +29,17 @@
 
 
     "litw-instruct-header-2": "Instructions: Part 2",
-    "litw-instruct-body-1-p1-2": "You'll be shown screenshots of websites you've used in the past.",
-    "litw-instruct-body-2-p1-2": "Your job is to select which types of data you'd be happy to provide to the website.",
+    "litw-instruct-body-1-p1-2": "You'll be shown screenshots of websites.",
+    "litw-instruct-body-2-p1-2": "Your job is to decide whether you'd provide certain data to that website, or whether you'd mind if the site had access to that data.",
     "litw-instruct-body-2-p2-2": "Let's give it a try!",
-    "litw-instruct-body-2-p1-touch-2": "Your job is to decide which types of data you'd be happy to provide by tapping 'Yes' or 'No'.",
+    "litw-instruct-body-2-p1-touch-2": "Your job is to decide whether you'd provide certain data to that website, or whether you'd mind if the site had access to that data.",
     "litw-instruct-body-2-p2-touch-2": "Let's give it a try!",
 
     "litw-instruct-header-3": "Instructions: Part 3",
     "litw-instruct-body-1-p1-3": "You'll be shown some different kinds of tools that people use to protect their privacy online. ",
-    "litw-instruct-body-2-p1-3": "Select the right option A-E based on whether you've used that tool or would be wiling to in the future.",
+    "litw-instruct-body-2-p1-3": "Select the option that fits best based on whether you've used that tool or would be wiling to in the future.",
     "litw-instruct-body-2-p2-3": "Let's give it a try!",
-    "litw-instruct-body-2-p1-touch-3": "Select the right option A-E based on whether you've used that tool or would be wiling to in the future.",
+    "litw-instruct-body-2-p1-touch-3": "Select the option that fits best based on whether you've used that tool or would be wiling to in the future.",
     "litw-instruct-body-2-p2-touch-3": "Let's give it a try!",
 
     "litw-instruct-header": "Instructions: Part 1",
