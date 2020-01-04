@@ -634,8 +634,8 @@ module.exports = (function() {
     params.stims3 = C.trialTools;
 
 		// shuffle the order of the questions in trial 3
-		params.practiceStims1 = LITW.utils.shuffleArrays(params.practiceStims3);
-		params.stims1 = LITW.utils.shuffleArrays(params.stims3);
+		params.practiceStims3 = LITW.utils.shuffleArrays(params.practiceStims3);
+		params.stims3 = LITW.utils.shuffleArrays(params.stims3);
 
 		LITW.utils.showSlide("img-loading");
 
