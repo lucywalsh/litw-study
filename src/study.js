@@ -75,24 +75,30 @@ module.exports = (function() {
 			prompt: "How old are you? (Please type a number)",
 			boundsMessage: "Are you really %s years old? If not, please make sure to enter the correct age so that your data contributes to our research.",
 			minValue: 6,
-			maxValue: 99
+			maxValue: 99,
+			required: true
 		})
 		.add("country", {
       style: "dropdown",
       prompt: "Where do you live?",
       options: "countries",
       expandable: true,
+			required: true,
     })
-		.add("education")
+		.add("education",{
+			required: true,
+		})
     .add("dataprivacy",{
       style:"radio",
       prompt:"Would you like to know more about how your data is used online?",
-      options: ["Yes","No"]
+      options: ["Yes","No"],
+			required: true
     })
     .add("why",{
       style:"dropdown",
       prompt:"What is the the main reason?",
-      options:["I think it would be interesting","I'm curious","I am concerned about how my data is used", "I don't feel well-informed", "I think I am well-informed","I don't care enough", "It would worry me too much", "Ignorance is bliss"]
+      options:["I think it would be interesting","I'm curious","I am concerned about how my data is used", "I don't feel well-informed", "I think I am well-informed","I don't care enough", "It would worry me too much", "Ignorance is bliss"],
+			required: true
     })
 		.render(startTrials);
 
@@ -529,24 +535,26 @@ module.exports = (function() {
         questions[i] = questions[i].replace("]","");
         questions[i] = questions[i].replace(/['"]+/g, '');
         //naive risk factor calculation
-        if(responses[i].includes("No")){
-          riskFactor=riskFactor+0.33;
-        }
-				if(responses[i].includes("Maybe")){
-          riskFactor=riskFactor+0.15;
-        }
-				if(responses[i].includes("I don't use this tool currently but <strong>I would be</strong> willing to use it")){
-          riskFactor=riskFactor+0.33;
-        }
-				if(responses[i].includes("I don't use this tool currently and <strong>I would not</strong> be willing to use it")){
-          riskFactor=riskFactor+0.33;
-        }
-				if(responses[i].includes("I have used this tool in the past and <strong>would</strong> be willing to use it again")){
-          riskFactor=riskFactor+0.15;
-        }
-				if(responses[i].includes("I have used this tool in the past but <strong>would not</strong> use it again")){
-          riskFactor=riskFactor+0.66;
-        }
+				if( typeof repsonses !== "undefined"){
+	        if(responses[i].includes("No")){
+	          riskFactor=riskFactor+0.33;
+	        }
+					if(responses[i].includes("Maybe")){
+	          riskFactor=riskFactor+0.15;
+	        }
+					if(responses[i].includes("I don't use this tool currently but <strong>I would be</strong> willing to use it")){
+	          riskFactor=riskFactor+0.33;
+	        }
+					if(responses[i].includes("I don't use this tool currently and <strong>I would not</strong> be willing to use it")){
+	          riskFactor=riskFactor+0.33;
+	        }
+					if(responses[i].includes("I have used this tool in the past and <strong>would</strong> be willing to use it again")){
+	          riskFactor=riskFactor+0.15;
+	        }
+					if(responses[i].includes("I have used this tool in the past but <strong>would not</strong> use it again")){
+	          riskFactor=riskFactor+0.66;
+	        }
+				}
       }
     });
 

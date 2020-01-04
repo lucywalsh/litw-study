@@ -14,57 +14,57 @@
 
 var data_questions = [
   {"prompt": "Would you mind if this website knew the name of your bank?",
-  "options": ["Yes","Maybe","No"]},
+  "options": ["Yes","Maybe","No"],"required":true},
   {"prompt": "Would you mind if this website knew your current location?",
-  "options": ["Yes","Maybe","No"]},
+  "options": ["Yes","Maybe","No"],"required":true},
   {"prompt": "Would you mind if this website knew your full name?",
-  "options": ["Yes","Maybe","No"]},
+  "options": ["Yes","Maybe","No"],"required":true},
   {"prompt": "Would you use your fingerprint to login to or access this website?",
-  "options": ["Yes","Maybe","No"]},
+  "options": ["Yes","Maybe","No"],"required":true},
   {"prompt": "Would you use a scan of your face to login to or access this website?",
-  "options": ["Yes","Maybe","No"]},
+  "options": ["Yes","Maybe","No"],"required":true},
   {"prompt": "Would you mind if this website knew your passport number?",
-  "options": ["Yes","Maybe","No"]},
+  "options": ["Yes","Maybe","No"],"required":true},
   {"prompt": "Would you mind if this website could access the contents of your emails?",
-  "options": ["Yes","Maybe","No"]},
+  "options": ["Yes","Maybe","No"],"required":true},
   {"prompt": "Would you mind if this website could access the contents of your personal messages?",
-  "options": ["Yes","Maybe","No"]},
+  "options": ["Yes","Maybe","No"],"required":true},
   {"prompt": "Would you mind if this website collected information about your browsing history on other websites?",
-  "options": ["Yes","Maybe","No"]},
+  "options": ["Yes","Maybe","No"],"required":true},
   {"prompt": "Would you mind if this website knew which kind of device you were using? e.g. if you are using a mobile phone or laptop",
-  "options": ["Yes","Maybe","No"]},
+  "options": ["Yes","Maybe","No"],"required":true},
   {"prompt": "Would you mind if this website was uniquely able to identify your device without you logging in?",
-  "options": ["Yes","Maybe","No"]},
+  "options": ["Yes","Maybe","No"],"required":true},
   {"prompt": "Would you mind if this website could access your contact list?",
-  "options": ["Yes","Maybe","No"]},
+  "options": ["Yes","Maybe","No"],"required":true},
   {"prompt": "Would you mind if this website knew where you worked?",
-  "options": ["Yes","Maybe","No"]},
+  "options": ["Yes","Maybe","No"],"required":true},
   {"prompt": "Would you mind if this website knew your racial/ethnic origin?",
-  "options": ["Yes","Maybe","No"]},
+  "options": ["Yes","Maybe","No"],"required":true},
   {"prompt": "Would you mind if this website knew about your hobbies or interests?",
-  "options": ["Yes","Maybe","No"]},
+  "options": ["Yes","Maybe","No"],"required":true},
   {"prompt": "Would you mind if this website knew who you wanted to vote for?",
-  "options": ["Yes","Maybe","No"]},
+  "options": ["Yes","Maybe","No"],"required":true},
   {"prompt": "Would you mind if this website knew if left or right leaning politically?",
-  "options": ["Yes","Maybe","No"]},
+  "options": ["Yes","Maybe","No"],"required":true},
   {"prompt": "Would you mind if this website knew your sexuality? i.e. whether you are heterosexual, homosexual, pansexual etc.",
-  "options": ["Yes","Maybe","No"]},
+  "options": ["Yes","Maybe","No"],"required":true},
   {"prompt": "Would mind if this website knew if you were disabled or not?",
-  "options": ["Yes","Maybe","No"]},
+  "options": ["Yes","Maybe","No"],"required":true},
   {"prompt": "Would mind if this website had access to your photos?",
-  "options": ["Yes","Maybe","No"]},
+  "options": ["Yes","Maybe","No"],"required":true},
   {"prompt": "Would you mind if this website knew your home address?",
-  "options": ["Yes","Maybe","No"]},
+  "options": ["Yes","Maybe","No"],"required":true},
   {"prompt": "Would you mind if this website knew what kind of products you liked?",
-  "options": ["Yes","Maybe","No"]},
+  "options": ["Yes","Maybe","No"],"required":true},
   {"prompt": "Would you mind if this website knew if you had allergies/dietary requirements?",
-  "options": ["Yes","Maybe","No"]},
+  "options": ["Yes","Maybe","No"],"required":true},
   {"prompt": "Would you mind if this website knew your religious beliefs?",
-  "options": ["Yes","Maybe","No"]},
+  "options": ["Yes","Maybe","No"],"required":true},
   {"prompt": "Would you mind if this website knew your credit card number?",
-  "options": ["Yes","Maybe","No"]},
+  "options": ["Yes","Maybe","No"],"required":true},
   {"prompt": "Would you mind if this website knew your bank account number?",
-  "options": ["Yes","Maybe","No"]}
+  "options": ["Yes","Maybe","No"],"required":true}
 ]
 
 function rand_questions(questions, num_qs){
@@ -139,7 +139,7 @@ function rand_scenario_trial(){
   rand_index = Math.floor(Math.random()*scenario_images.length);
   rand_scenario_image = scenario_images[rand_index];
   scenario_images.splice(rand_index,1);
-  return {"type": "survey-likert","questions": [ {"prompt": rand_scenario_image, "labels": scale_1}]};
+  return {"type": "survey-likert","questions": [ {"prompt": rand_scenario_image, "labels": scale_1, "required":true}]};
 }
 
 var scale_1 = [
@@ -165,7 +165,7 @@ var tools_question = [{"prompt": "Have you used this tool?",
   "I have used this tool in the past and <strong>would</strong> be willing to use it again",
   "I have used this tool in the past but <strong>would not</strong> use it again",
   "I use this tool <strong>currently</strong>"
-]}];
+],"required":true}];
 
 
 
@@ -223,7 +223,7 @@ module.exports = {
       "image":"<img class='website' id='twitter' src='img/websites/twitter.png' style='width:80%;height:50%;border:2px solid black'/>",
       "questions":[
           {"prompt": "Would mind if this website knew your bank account number?",
-          "options": ["Yes","Maybe","No"],
+          "options": ["Yes","Maybe","No"],"required":true,
           "horizontal":true}
       ]
 		}
