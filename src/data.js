@@ -105,23 +105,46 @@ var website_images = [
 var scenario_images = [
   "<img class='scenario' id='allrecipes' src='img/scenarios/allrecipes.png' style='width:90%;height:50%'/>",
   "<img class='scenario' id='accuweather-facebook' src='img/scenarios/accuweather-facebook.png' style='width:90%;height:50%'/>",
+  "<img class='scenario' id='accuweather-facebook-2' src='img/scenarios/accuweather-facebook-2.png' style='width:90%;height:50%'/>",
   "<img class='scenario' id='amazon-1' src='img/scenarios/amazon-1.png' style='width:80%;height:50%'/>",
   "<img class='scenario' id='amazon-2' src='img/scenarios/amazon-2.png' style='width:80%;height:50%'/>",
-  "<img class='scenario' id='amazon-3' src='img/scenarios/amazon-3.png' style='width:80%;height:50%'/>",
   "<img class='scenario' id='apple-1' src='img/scenarios/apple-1.png' style='width:80%;height:50%'/>",
-  "<img class='scenario' id='apple-2' src='img/scenarios/apple-2.png' style='width:80%;height:50%'/>",
   "<img class='scenario' id='bbc-1' src='img/scenarios/bbc-1.png' style='width:80%;height:50%'/>",
   "<img class='scenario' id='bbc-2' src='img/scenarios/bbc-2.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='bbc-2-2' src='img/scenarios/bbc-2-2.png' style='width:80%;height:50%'/>",
   "<img class='scenario' id='dictionary-1' src='img/scenarios/dictionary-1.png' style='width:80%;height:50%'/>",
   "<img class='scenario' id='dictionary-2' src='img/scenarios/dictionary-2.png' style='width:80%;height:50%'/>",
   "<img class='scenario' id='ebay-1' src='img/scenarios/ebay-1.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='ebay-1-2' src='img/scenarios/ebay-1-2.png' style='width:80%;height:50%'/>",
   "<img class='scenario' id='ebay-2' src='img/scenarios/ebay-2.png' style='width:80%;height:50%'/>",
   "<img class='scenario' id='expedia-facebook' src='img/scenarios/expedia-facebook.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='expedia-facebook-2' src='img/scenarios/expedia-facebook-2.png' style='width:80%;height:50%'/>",
   "<img class='scenario' id='facebook-1' src='img/scenarios/facebook-1.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='facebook-1-2' src='img/scenarios/facebook-1-2.png' style='width:80%;height:50%'/>",
   "<img class='scenario' id='facebook-2' src='img/scenarios/facebook-2.png' style='width:80%;height:50%'/>",
   "<img class='scenario' id='facebook-3' src='img/scenarios/facebook-3.png' style='width:80%;height:50%'/>",
-  "<img class='scenario' id='instagram' src='img/scenarios/instagram.png' style='width:80%;height:50%'/>",
-  "<img class='scenario' id='netflix' src='img/scenarios/netflix.png' style='width:80%;height:50%/>",
+  "<img class='scenario' id='facebook-4' src='img/scenarios/facebook-4.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='gmail-personal' src='img/scenarios/gmail-personal.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='gmail-work' src='img/scenarios/gmail-work.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='google-1' src='img/scenarios/google-1.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='google-2' src='img/scenarios/google-2.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='google-maps' src='img/scenarios/google-maps-1.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='instagram-1' src='img/scenarios/instagram-1.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='instagram-2' src='img/scenarios/instagram-2.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='linkedin-1' src='img/scenarios/linkedin-1.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='netflix-1' src='img/scenarios/netflix-1.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='nytimes-1' src='img/scenarios/nytimes-1.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='nytimes-2' src='img/scenarios/nytimes-2.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='nytimes-3' src='img/scenarios/nytimes-3.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='paypal-1' src='img/scenarios/paypal-1.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='paypal-2' src='img/scenarios/paypal-2.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='reddit-1' src='img/scenarios/reddit-1.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='tripadvisor-1' src='img/scenarios/tripadvisor-1.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='twitter-1' src='img/scenarios/twitter-1.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='twitter-2' src='img/scenarios/twitter-2.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='whatsapp-1' src='img/scenarios/whatsapp-1.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='wikipedia-1' src='img/scenarios/wikipedia-1.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='wikipedia-2' src='img/scenarios/wikipedia-2.png' style='width:80%;height:50%'/>",
 ]
 
 var sorting_stimuli = [
@@ -137,7 +160,9 @@ function rand_website_trial(){
 
 function rand_scenario_trial(){
   rand_index = Math.floor(Math.random()*scenario_images.length);
+  console.log(rand_index);
   rand_scenario_image = scenario_images[rand_index];
+  console.log(rand_scenario_image);
   scenario_images.splice(rand_index,1);
   return {"type": "survey-likert","questions": [ {"prompt": rand_scenario_image, "labels": scale_1, "required":true}]};
 }
@@ -200,6 +225,11 @@ module.exports = {
     rand_scenario_trial(),
     rand_scenario_trial(),
     rand_scenario_trial(),
+    rand_scenario_trial(),
+    rand_scenario_trial(),
+    rand_scenario_trial(),
+    rand_scenario_trial(),
+    rand_scenario_trial(),
     rand_scenario_trial()
   ],
 	"loadingMsg": "Loading resources:",
@@ -239,7 +269,14 @@ module.exports = {
     {"type":"survey-multi-choice","image":"<img class='tool' id='browser' src='img/tools/browser.png' style='width:80%;height:50%'/>","questions":tools_question,"randomize_question_order":false}
   ],
   "trialTools":[
-    {"type":"survey-multi-choice","image":"<img class='tool' id='adblocker' src='img/tools/adblocker.png' style='width:80%;height:50%'/>","questions":tools_question,"randomize_question_order":false}
+    {"type":"survey-multi-choice","image":"<img class='tool' id='adblocker' src='img/tools/adblocker.png' style='width:80%;height:50%'/>","questions":tools_question,"randomize_question_order":false},
+    {"type":"survey-multi-choice","image":"<img class='tool' id='anonymous-browser' src='img/tools/anonymous-browser.png' style='width:80%;height:50%'/>","questions":tools_question,"randomize_question_order":false},
+    {"type":"survey-multi-choice","image":"<img class='tool' id='anti-virus' src='img/tools/anti-virus.png' style='width:80%;height:50%'/>","questions":tools_question,"randomize_question_order":false},
+    {"type":"survey-multi-choice","image":"<img class='tool' id='encrypted-messaging' src='img/tools/encrypted-messaging.png' style='width:80%;height:50%'/>","questions":tools_question,"randomize_question_order":false},
+    {"type":"survey-multi-choice","image":"<img class='tool' id='password-manager' src='img/tools/password-manager.png' style='width:80%;height:50%'/>","questions":tools_question,"randomize_question_order":false},
+    {"type":"survey-multi-choice","image":"<img class='tool' id='private-email' src='img/tools/private-email.png' style='width:80%;height:50%'/>","questions":tools_question,"randomize_question_order":false},
+    {"type":"survey-multi-choice","image":"<img class='tool' id='third-party' src='img/tools/third-party.png' style='width:80%;height:50%'/>","questions":tools_question,"randomize_question_order":false},
+    {"type":"survey-multi-choice","image":"<img class='tool' id='vpn' src='img/tools/vpn.png' style='width:80%;height:50%'/>","questions":tools_question,"randomize_question_order":false}
   ],
 	"resultsExplanation": ["The tasks you completed in this study helped us to understand your attitude towards data privacy online.", "We are interested in learning more about this in order to build a product to help people protect their data online."],
 };
