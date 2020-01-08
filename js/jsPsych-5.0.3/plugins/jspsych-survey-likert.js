@@ -71,12 +71,12 @@ jsPsych.plugins['survey-likert'] = (function() {
         $.extend(question_data, obje);
       });
       $("#jspsych-survey-likert-form .jspsych-survey-likert-statement .scenario").each(function(index){
-        console.log($(this).context.id);
+        //console.log($(this).context.id);
         scenario = $(this).context.id;
       });
       var tool = {};
       $("#jspsych-survey-likert-form .jspsych-survey-likert-statement .tool").each(function(index){
-        console.log($(this).context.id);
+        //console.log($(this).context.id);
         tool = $(this).context.id;
       });
 

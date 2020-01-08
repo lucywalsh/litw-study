@@ -487,7 +487,8 @@ module.exports = (function() {
 		// get the trial data from jsPsych
 		var studyData = jsPsych.data.getTrialsOfType("survey-likert");
     var studyData2 = jsPsych.data.getTrialsOfType("survey-multi-choice");
-    console.log(studyData2);
+		//console.log(studyData);
+    //console.log(studyData2);
 
     var riskFactor = 0.0;
 
@@ -496,23 +497,6 @@ module.exports = (function() {
         var levelOfConcern = parseInt(item.responses[7]);
         if(levelOfConcern<3){
           riskFactor=riskFactor+0.33;
-        }
-      }
-      else{
-        var toolUse = parseInt(item.responses[9]);
-        switch(toolUse){
-          case 0:
-            riskFactor=riskFactor+0.33;
-            break
-          case 1:
-            riskFactor=riskFactor+0.66;
-            break
-          case 2:
-            riskFactor=riskFactor+0.33;
-            break
-          case 3:
-            riskFactor=riskFactor+0.66;
-            break
         }
       }
 		});
@@ -534,8 +518,9 @@ module.exports = (function() {
         questions[i] = questions[i].replace("[","");
         questions[i] = questions[i].replace("]","");
         questions[i] = questions[i].replace(/['"]+/g, '');
+				//console.log(questions[i]);
         //naive risk factor calculation
-				if( typeof repsonses !== "undefined"){
+				if( typeof responses[i] !== "undefined"){
 	        if(responses[i].includes("No")){
 	          riskFactor=riskFactor+0.33;
 	        }
@@ -552,22 +537,31 @@ module.exports = (function() {
 	          riskFactor=riskFactor+0.15;
 	        }
 					if(responses[i].includes("I have used this tool in the past but <strong>would not</strong> use it again")){
-	          riskFactor=riskFactor+0.66;
+	          riskFactor=riskFactor+0.33;
 	        }
 				}
       }
     });
 
     var riskLevel = "";
+		var lowRisk=0;
+		var mediumRisk=0;
+		var highRisk=0;
     riskFactor = Math.floor(riskFactor);
+		if(riskFactor>10){
+			riskFactor=10;
+		}
     if(riskFactor<4){
       riskLevel = "low risk";
+			lowRisk=1;
     }
 		else if(riskFactor<8){
 			riskLevel = "medium risk";
+			mediumRisk=1;
 		}
 		else{
 			riskLevel = "high risk";
+			highRisk=1;
 		}
 
 		var submitRiskFactor = {"riskFactor":riskFactor};
@@ -578,8 +572,8 @@ module.exports = (function() {
 		request.open("GET", "summary.json", false);
 		request.send(null)
 		var data = JSON.parse(request.responseText);
-		avgRiskFactor = data['avgRiskFactor'];
-		console.log(avgRiskFactor);
+		avgRiskFactor = Math.floor(data['avgRiskFactor']);
+		//console.log(avgRiskFactor);
 
 		LITW.utils.showSlide("results");
 		$("#results").html(resultsTemplate({
@@ -588,6 +582,9 @@ module.exports = (function() {
 			citations: C.citations,
       riskFactor: riskFactor,
       riskLevel: riskLevel,
+			lowRisk: lowRisk,
+			mediumRisk:mediumRisk,
+			highRisk:highRisk,
 			averageRisk: avgRiskFactor
 		}));
 
@@ -649,7 +646,7 @@ module.exports = (function() {
 
 
 		// preload images
-		jsPsych.pluginAPI.preloadImages(params.stims1,
+		jsPsych.pluginAPI.preloadImages([params.stims1,params.stims2,params.stims3],
 
 			// initialize the jsPsych timeline and
 			// proceed to IRB page when loading has finished

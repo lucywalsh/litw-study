@@ -95,7 +95,7 @@ var website_images = [
   "<img class='website' id='reddit' src='img/websites/reddit.png' style='width:80%;height:50%;border:2px solid black'/>",
   "<img class='website' id='tripadvisor' src='img/websites/tripadvisor.png' style='width:80%;height:50%;border:2px solid black'/>",
   "<img class='website' id='twitter' src='img/websites/twitter.png' style='width:80%;height:50%;border:2px solid black'/>",
-  "<img class='website' id='whatsapp' src='img/websites/whatsapp.png' style='height:200px;border:2px solid black'/>",
+  "<img class='website' id='whatsapp' src='img/websites/whatsapp.png' style='height:400px;border:2px solid black'/>",
   "<img class='website' id='wikipedia' src='img/websites/wikipedia.png' style='width:80%;height:50%;border:2px solid black'/>",
   "<img class='website' id='youtube' src='img/websites/youtube.jpeg' style='width:80%;height:50%;border:2px solid black'/>",
 ]
@@ -112,7 +112,7 @@ var scenario_images = [
   "<img class='scenario' id='bbc-2-2' src='img/scenarios/bbc-2-2.png' style='width:80%;height:50%'/>",
   "<img class='scenario' id='dictionary-1' src='img/scenarios/dictionary-1.png' style='width:80%;height:50%'/>",
   "<img class='scenario' id='dictionary-2' src='img/scenarios/dictionary-2.png' style='width:80%;height:50%'/>",
-  "<img class='scenario' id='ebay-1' src='img/scenarios/ebay-1.png' style='width:80%;height:50%'/>",
+  "<img class='scenario' id='ebay-1' src='img/scenarios/ebay-1-1.png' style='width:80%;height:50%'/>",
   "<img class='scenario' id='ebay-1-2' src='img/scenarios/ebay-1-2.png' style='width:80%;height:50%'/>",
   "<img class='scenario' id='ebay-2' src='img/scenarios/ebay-2.png' style='width:80%;height:50%'/>",
   "<img class='scenario' id='expedia-facebook' src='img/scenarios/expedia-facebook.png' style='width:80%;height:50%'/>",
@@ -158,9 +158,7 @@ function rand_website_trial(){
 
 function rand_scenario_trial(){
   rand_index = Math.floor(Math.random()*scenario_images.length);
-  console.log(rand_index);
   rand_scenario_image = scenario_images[rand_index];
-  console.log(rand_scenario_image);
   scenario_images.splice(rand_index,1);
   return {"type": "survey-likert","questions": [ {"prompt": rand_scenario_image, "labels": scale_1, "required":true}]};
 }
@@ -234,8 +232,9 @@ module.exports = {
 	"progressMsg": "Progress:",
 	"results": {
 		"header": "Based on your answers, your score is: ",
-		"riskyMsg": "Your data might be at risk while you browse. Be aware of the kinds of information sites collect from you - take a look at the privacy policies on websites, or download some of these browser extensions to help protect your data:",
-		"notRiskyMsg": "Your data probably isn't at too much risk while you browse - great! It might still be worth taking a look at some of these browser extensions  to keep yourself as safe as possible: "
+    "highRiskMsg": "Your data is likely at risk while you browse. Err on the side of caution and check what kinds information sites collect from you by looking at the privacy policies at the privacy policies on websites, and take a look at these browser extensions that can help you to protect your data:",
+		"mediumRiskMsg": "Your data might be at risk while you browse. Be aware of the kinds of information sites collect from you - take a look at the privacy policies on websites, or download some of these browser extensions to help protect your data:",
+		"lowRiskdMsg": "Your data probably isn't at too much risk while you browse - great! It might still be worth taking a look at some of these browser extensions  to keep yourself as safe as possible: "
 	},
   "website_use":[
     {
