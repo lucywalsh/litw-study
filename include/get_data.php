@@ -36,12 +36,12 @@ while ($stmt->fetch()) {
 $stmt->close();
 
 $f_data = fopen('db_data.json', 'w');
-
+/*
 if(false===$f_data){
   echo "can't open file";
   print_r(error_get_last());
 }
-
+*/
 fwrite($f_data,'[');
 $i = 0;
 $arrayLength=count($result)-1;
