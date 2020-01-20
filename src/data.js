@@ -166,7 +166,7 @@ function rand_scenario_trial(){
 var scale_1 = [
   "Not concerning at all",
   "Not very concerning",
-  "Neither concerning nor not concerning",
+  "I don't have an opinion either way",
   "Quite concerning",
   "Very concerning"
 ];
