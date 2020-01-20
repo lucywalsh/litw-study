@@ -97,7 +97,7 @@ module.exports = (function() {
     .add("why",{
       style:"dropdown",
       prompt:"What is the the main reason?",
-      options:["I think it would be interesting","I'm curious","I am concerned about how my data is used", "I don't feel well-informed", "I think I am well-informed","I don't care enough", "It would worry me too much", "Ignorance is bliss"],
+      options:["I think it would be interesting","I am concerned about how my data is used", "I don't feel well-informed", "I think I am well-informed","I don't care enough", "It would worry me too much", "Ignorance is bliss"],
 			required: true
     })
 		.render(startTrials);
