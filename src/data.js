@@ -45,7 +45,7 @@ var data_questions = [
   "options": ["Yes","Maybe","No"],"required":true},
   {"prompt": "Would you mind if this website knew who you wanted to vote for?",
   "options": ["Yes","Maybe","No"],"required":true},
-  {"prompt": "Would you mind if this website knew if left or right leaning politically?",
+  {"prompt": "Would you mind if this website knew if you were politcally left or right leaning?",
   "options": ["Yes","Maybe","No"],"required":true},
   {"prompt": "Would you mind if this website knew your sexuality? i.e. whether you are heterosexual, homosexual, pansexual etc.",
   "options": ["Yes","Maybe","No"],"required":true},
