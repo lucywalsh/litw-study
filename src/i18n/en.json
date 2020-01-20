@@ -44,7 +44,7 @@
 
     "litw-instruct-header": "Instructions: Part 1",
     "litw-instruct-body-1-p1": "You'll be shown a scenario of something you might come across when browsing online.",
-    "litw-instruct-body-2-p1": "For each scenario, rate how concerning you find it.",
+    "litw-instruct-body-2-p1": "For each scenario, rate how concerning you find it. Make sure to read the text very carefully - you might be presented with scenarios that look the same but have different information or are asking a slightly different question.",
     "litw-instruct-body-2-p2": "Let's give it a try!",
     "litw-instruct-body-2-p1-touch": "For each scenario, rate how concerning you find it.",
     "litw-instruct-body-2-p2-touch": "Let's give it a try!",
