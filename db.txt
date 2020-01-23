@@ -1,0 +1,2 @@
+1. go to students.cs.ucl.ac.uk/2019/l.walsh/include/get_data.php to update db_data.json with all the database database
+2. go to http://students.cs.ucl.ac.uk/2019/l.walsh/include/summary_data.php to update summmary.json with the number of participants and avg risk factor
