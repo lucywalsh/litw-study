@@ -32,6 +32,8 @@ jsPsych.plugins['survey-multi-choice'] = (function() {
     // it with the output of the function
     trial = jsPsych.pluginAPI.evaluateFunctionParameters(trial);
 
+    display_element.append(trial.image)
+
     // form element
     var trial_form_id = _join(plugin_id_name, "form");
     display_element.append($('<form>', {
@@ -64,11 +66,11 @@ jsPsych.plugins['survey-multi-choice'] = (function() {
 
       // add question text
       $(question_selector).append(
-        '<p class="' + plugin_id_name + '-text survey-multi-choice">' + trial.questions[i] + '</p>'
+        '<p class="' + plugin_id_name + '-text survey-multi-choice">' + trial.questions[i].prompt + '</p>'
       );
 
       // create option radio buttons
-      for (var j = 0; j < trial.options[i].length; j++) {
+      for (var j = 0; j < trial.questions[i].options.length; j++) {
         var option_id_name = _join(plugin_id_name, "option", i, j),
           option_id_selector = '#' + option_id_name;
 
@@ -79,12 +81,12 @@ jsPsych.plugins['survey-multi-choice'] = (function() {
         }));
 
         // add label and question text
-        var option_label = '<label class="' + plugin_id_name + '-text">' + trial.options[i][j] + '</label>';
+        var option_label = '<label class="' + plugin_id_name + '-text">' + trial.questions[i].options[j] + '</label>';
         $(option_id_selector).append(option_label);
 
         // create radio button
         var input_id_name = _join(plugin_id_name, 'response', i);
-        $(option_id_selector + " label").prepend('<input type="radio" name="' + input_id_name + '" value="' + trial.options[i][j] + '">');
+        $(option_id_selector + " label").prepend('<input type="radio" name="' + input_id_name + '" value="' + trial.questions[i].options[j] + '">');
       }
 
       if (trial.required && trial.required[i]) {
@@ -122,10 +124,66 @@ jsPsych.plugins['survey-multi-choice'] = (function() {
         $.extend(question_data, obje);
       });
 
+      var question_dict = {
+        "Would you mind if this website knew the name of your bank?":"bank",
+        "Would you mind if this website knew your current location?":"location",
+        "Would you mind if this website knew your full name?":"fullname",
+        "Would you use your fingerprint to login to or access this website?":"fingerprint",
+        "Would you use a scan of your face to login to or access this website?":"face",
+        "Would you mind if this website knew your passport number?":"passport",
+        "Would you mind if this website could access the contents of your emails?":"emails",
+        "Would you mind if this website could access the contents of your personal messages?":"messages",
+        "Would you mind if this website collected information about your browsing history on other websites?":"history",
+        "Would you mind if this website knew which kind of device you were using? e.g. if you are using a mobile phone or laptop":"device",
+        "Would you mind if this website was uniquely able to identify your device without you logging in?":"deviceID",
+        "Would you mind if this website could access your contact list?":"contacts",
+        "Would you mind if this website knew where you worked?":"employment",
+        "Would you mind if this website knew your racial/ethnic origin?":"race",
+        "Would you mind if this website knew about your hobbies or interests?":"hobbies",
+        "Would you mind if this website knew who you wanted to vote for?":"vote",
+        "Would you mind if this website knew if left or right leaning politically?":"lean",
+        "Would you mind if this website knew your sexuality? i.e. whether you are heterosexual, homosexual, pansexual etc.":"sexuality",
+        "Would mind if this website knew if you were disabled or not?":"disability",
+        "Would mind if this website had access to your photos?":"photos",
+        "Would you mind if this website knew your home address?":"address",
+        "Would you mind if this website knew what kind of products you liked?":"products",
+        "Would you mind if this website knew if you had allergies/dietary requirements?":"dietary",
+        "Would you mind if this website knew your religious beliefs?":"religion",
+        "Would you mind if this website knew your credit card number?":"creditcard",
+        "Would you mind if this website knew your bank account number?":"bankaccount"
+      };
+
+      var questionText = {};
+      var question={};
+      var questions=[];
+      $("div." + plugin_id_name + "-question .jspsych-survey-multi-choice-text.survey-multi-choice").each(function(index) {
+        questionText = $(this).context.innerText;
+        if(questionText in question_dict){
+          question = question_dict[questionText];
+          questions.push(question);
+        }
+        else{
+          questions.push(questionText);
+        }
+      });
+
+      var website = {};
+      $("#trials .website").each(function(index){
+        website = $(this).context.id;
+      });
+
+      var tool = {};
+      $("#trials .tool").each(function(index){
+        tool = $(this).context.id;
+      });
+
       // save data
       var trial_data = {
         "rt": response_time,
-        "responses": JSON.stringify(question_data)
+        "responses": JSON.stringify(question_data),
+        "questions": JSON.stringify(questions),
+        "website": JSON.stringify(website),
+        "tool": JSON.stringify(tool)
       };
 
       display_element.html('');

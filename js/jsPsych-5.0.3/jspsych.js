@@ -547,7 +547,7 @@ var jsPsych = (function() {
     if(typeof timeline.end_message !== 'undefined'){
       DOM_target.html(timeline.end_message);
     }
-
+/*
     if (document.exitFullscreen) {
       document.exitFullscreen();
     } else if (document.msExitFullscreen) {
@@ -557,7 +557,7 @@ var jsPsych = (function() {
     } else if (document.webkitExitFullscreen) {
       document.webkitExitFullscreen();
     }
-
+*/
   }
 
   function doTrial(trial) {

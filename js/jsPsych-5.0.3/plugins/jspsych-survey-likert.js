@@ -35,12 +35,12 @@ jsPsych.plugins['survey-likert'] = (function() {
     for (var i = 0; i < trial.questions.length; i++) {
       form_element = $('#jspsych-survey-likert-form');
       // add question
-      form_element.append('<label class="jspsych-survey-likert-statement">' + trial.questions[i] + '</label>');
+      form_element.append('<label class="jspsych-survey-likert-statement">' + trial.questions[i].prompt + '</label>');
       // add options
-      var width = 100 / trial.labels[i].length;
+      var width = 100 / trial.questions[i].labels.length;
       options_string = '<ul class="jspsych-survey-likert-opts" data-radio-group="Q' + i + '">';
-      for (var j = 0; j < trial.labels[i].length; j++) {
-        options_string += '<li style="width:' + width + '%"><input type="radio" name="Q' + i + '" value="' + j + '"><label class="jspsych-survey-likert-opt-label">' + trial.labels[i][j] + '</label></li>';
+      for (var j = 0; j < trial.questions[i].labels.length; j++) {
+        options_string += '<li style="width:' + width + '%"><input type="radio" name="Q' + i + '" value="' + j + '"><label class="jspsych-survey-likert-opt-label">' + trial.questions[i].labels[j] + '</label></li>';
       }
       options_string += '</ul>';
       form_element.append(options_string);
@@ -59,6 +59,7 @@ jsPsych.plugins['survey-likert'] = (function() {
 
       // create object to hold responses
       var question_data = {};
+      var scenario={};
       $("#jspsych-survey-likert-form .jspsych-survey-likert-opts").each(function(index) {
         var id = $(this).data('radio-group');
         var response = $('input[name="' + id + '"]:checked').val();
@@ -69,11 +70,22 @@ jsPsych.plugins['survey-likert'] = (function() {
         obje[id] = response;
         $.extend(question_data, obje);
       });
+      $("#jspsych-survey-likert-form .jspsych-survey-likert-statement .scenario").each(function(index){
+        //console.log($(this).context.id);
+        scenario = $(this).context.id;
+      });
+      var tool = {};
+      $("#jspsych-survey-likert-form .jspsych-survey-likert-statement .tool").each(function(index){
+        //console.log($(this).context.id);
+        tool = $(this).context.id;
+      });
 
       // save data
       var trial_data = {
         "rt": response_time,
-        "responses": JSON.stringify(question_data)
+        "responses": JSON.stringify(question_data),
+        "scenario": JSON.stringify(scenario),
+        "tool": JSON.stringify(tool)
       };
 
       display_element.html('');

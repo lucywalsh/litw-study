@@ -5,9 +5,9 @@
  *
  * Author: Trevor Croxson
  *       : Nigini A. Oliveira
- * 
+ *
  * Last Modified: February 5, 2017
- * 
+ *
  * © Copyright 2017 LabintheWild.
  * For questions about this file and permission to use
  * the code, contact us at info@labinthewild.org
@@ -66,4 +66,12 @@
 .citations {
 	margin-top: 30px;
 	margin-bottom: 30px;
+}
+
+.website-use-table {
+	align-items:center;
+	text-align:center;
+	border-collapse:separate;
+	border-spacing:1em;
+	table-layout: fixed;
 }

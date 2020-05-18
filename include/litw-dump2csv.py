@@ -70,5 +70,5 @@ def main():
     json_normalize(list(data_uuid.values())).to_csv(OUTPUT_FILE, index=False, quoting=csv.QUOTE_ALL)
 
 
-if __name__ == "__main__":
-    main()
+#if __name__ == "__main__":
+#   main()
